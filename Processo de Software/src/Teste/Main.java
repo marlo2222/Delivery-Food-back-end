@@ -8,6 +8,7 @@ public class Main {
 		System.out.println("deu certo nao");
 		for (int i = 0; i < args.length; i++) {
 			System.out.println(i);
+			System.out.println(2);
 		}
 
 
