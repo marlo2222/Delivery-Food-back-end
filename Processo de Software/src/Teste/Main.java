@@ -11,6 +11,7 @@ public class Main {
 			System.out.println(2);
 
 			System.out.println(i+1+1+2);
+			System.out.println(i+1+1+1);
 			
 		}
 
