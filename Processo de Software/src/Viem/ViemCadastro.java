@@ -31,4 +31,9 @@ public class ViemCadastro {
 		System.out.println("informe seu Rg:");
 		return input.nextLine();
 	}
+	public int senha() {
+		System.out.println("Defina sua senha:");
+		return input.nextInt();
+	}
+	
 }

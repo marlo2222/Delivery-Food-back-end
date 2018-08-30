@@ -8,7 +8,7 @@ public class Proprietario {
 	private String cpf;
 	private String contatoProprietario;
 	private String rgProprietario;
-	protected int Senha;
+	private int Senha;
 	private ArrayList<Restaurantes> restaurante;
 
 	public String getNomeProprietario() {
@@ -51,6 +51,14 @@ public class Proprietario {
 
 	public void setRgProprietario(String rgProprietario) {
 		if(rgProprietario != null)this.rgProprietario = rgProprietario;
+	}
+
+	public int getSenha() {
+		return Senha;
+	}
+
+	public void setSenha(int senha) {
+		Senha = senha;
 	}
 
 }
