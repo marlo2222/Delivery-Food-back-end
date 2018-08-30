@@ -16,7 +16,7 @@ public class ViemValidacao {
 		System.out.println("CNPJ Valido");
 	}
 	public void msgCnpjInvalido() {
-		System.out.println("CNPJ invvalido");
+		System.out.println("CNPJ invalido");
 	}
 
 }
