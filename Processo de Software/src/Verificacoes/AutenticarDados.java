@@ -10,7 +10,7 @@ import Viem.ViemValidacao;
 public class AutenticarDados {
 	ViemValidacao viem = new ViemValidacao();
 
-	public boolean AutenticarDadosProprietario(Proprietario prop) {
+	public boolean AutenticarDados(Proprietario prop) {
 		if (verificarEmail(prop.getEmailProprietario()) == true && verificarNome(prop.getNomeProprietario()) == true
 				&& verificarTelefone(prop.getContatoProprietario()) == true && verificarCPF(prop.getCpf()) == true) {
 		return true;}
