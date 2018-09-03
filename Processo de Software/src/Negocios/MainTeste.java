@@ -5,7 +5,7 @@ import java.util.Scanner;
 import EsDadosTemp.Hash;
 
 public class MainTeste {
-
+//teste
 	public static void main(String[] args) {
 		Scanner ler = new Scanner(System.in);
 		Controler controler = new Controler();
