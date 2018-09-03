@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class Proprietario {
 	private String nomeProprietario;
 	private String emailProprietario;
-	private String cnpj;
+	private String cpf;
 	private String contatoProprietario;
 	private String rgProprietario;
-	protected int Senha;
+	private int Senha;
 	private ArrayList<Restaurantes> restaurante;
 
 	public String getNomeProprietario() {
@@ -29,12 +29,12 @@ public class Proprietario {
 			this.emailProprietario = emailProprietario;
 	}
 
-	public String getCnpj() {
-		return cnpj;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCnpj(String cnpj) {
-		if(cnpj != null) this.cnpj = cnpj;
+	public void setCpf(String cpf) {
+		if(cpf != null) this.cpf = cpf;
 	}
 
 	public String getContatoProprietario() {
@@ -51,6 +51,14 @@ public class Proprietario {
 
 	public void setRgProprietario(String rgProprietario) {
 		if(rgProprietario != null)this.rgProprietario = rgProprietario;
+	}
+
+	public int getSenha() {
+		return Senha;
+	}
+
+	public void setSenha(int senha) {
+		Senha = senha;
 	}
 
 }

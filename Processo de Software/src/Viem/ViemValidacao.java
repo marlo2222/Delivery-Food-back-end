@@ -12,11 +12,14 @@ public class ViemValidacao {
 	public void msgEmailInvalido() {
 		System.out.println("email invalido");
 	}
-	public void msgCnpjValido() {
-		System.out.println("CNPJ Valido");
+	public void msgCpfInvalido() {
+		System.out.println("Cpf invalido");
 	}
-	public void msgCnpjInvalido() {
-		System.out.println("CNPJ invvalido");
+	public void nomeInvalido() {
+		System.out.println("Seu nome é invalido");
+	}
+	public void msgTelefoneInvalido() {
+		System.out.println("Telefone  valido");
 	}
 
 }

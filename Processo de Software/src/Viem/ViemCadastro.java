@@ -18,7 +18,7 @@ public class ViemCadastro {
 	}
 
 	public String cnpj() {
-		System.out.println("Digite o cnpj da sua empresa:");
+		System.out.println("Digite seu Cpf:");
 		return input.nextLine();
 	}
 
@@ -31,4 +31,9 @@ public class ViemCadastro {
 		System.out.println("informe seu Rg:");
 		return input.nextLine();
 	}
+	public int senha() {
+		System.out.println("Defina sua senha:");
+		return input.nextInt();
+	}
+	
 }
