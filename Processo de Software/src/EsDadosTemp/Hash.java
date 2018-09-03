@@ -28,6 +28,7 @@ public class Hash {
 					return aux.proprietario;
 			}
 		}
+		//oi
 		return null;
 	}public boolean buscar(String cpf, String usuario) {
 		int indice = h(dig(cpf));
