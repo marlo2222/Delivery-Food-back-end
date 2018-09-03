@@ -24,6 +24,9 @@ public class MainTeste {
 			default:
 				break;}
 			}while(op!=2);
+		
+		
+		System.out.println("ola");
 			
 		}
 	}
