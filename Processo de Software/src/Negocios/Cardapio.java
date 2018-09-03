@@ -2,5 +2,5 @@ package Negocios;
 
 public class Cardapio {
 //oi
-	//aplicando mudancas para testa
+	//aplicando mudancas para testar
 }
