@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import Negocios.Proprietario;
 
-public class ViemCadastro {
+public class ViemDadoscadastro {
 	Scanner input = new Scanner(System.in);
 
 	public String nome() {
