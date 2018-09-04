@@ -4,11 +4,13 @@ import EsDadosTemp.Hash;
 import Verificacoes.AutenticarDados;
 import Viem.ViemCadastro;
 import Viem.ViemNotificacoes;
+import Viem.ViemPropritario;
 
 public class Controler {
-	ViemCadastro viemCadastro = new ViemCadastro();
+	ViemCadastro viemCadastro;
 	ViemNotificacoes viemNotificacoes;
-	AutenticarDados autenticacao = new AutenticarDados();
+	AutenticarDados autenticacao;
+	ViemPropritario telaPro;
 	private Hash liUsuarios = new Hash();
 
 	public void cadastraProprieatrio() {
@@ -25,6 +27,7 @@ public class Controler {
 			if (autenticacao.AutenticarDados(proprietario) == true) {
 				proprietario.setSenha(viemCadastro.senha());
 				liUsuarios.adicionar(proprietario,proprietario.getCpf());
+				
 
 			}
 		} else {
