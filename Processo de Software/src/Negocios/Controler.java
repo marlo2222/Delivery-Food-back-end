@@ -14,9 +14,10 @@ public class Controler {
 	ViemPropritario telaPro = new ViemPropritario();
 	ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
 	private Hash liUsuarios = new Hash();
+	Object usuario;
 
 	public void cadastraProprieatrio() {
-	
+
 		Proprietario proprietario = new Proprietario();
 
 		proprietario.setNomeProprietario(viemCadastro.nome());
@@ -25,20 +26,24 @@ public class Controler {
 		proprietario.setContatoProprietario(viemCadastro.telefone());
 		proprietario.setRgProprietario(viemCadastro.rg());
 
-		if (liUsuarios.buscar(proprietario.getCpf(),proprietario.getNomeProprietario()) == true) {
+		if (liUsuarios.buscar(proprietario.getCpf(), proprietario.getNomeProprietario()) == true) {
 			if (autenticacao.AutenticarDados(proprietario) == true) {
 				proprietario.setSenha(viemCadastro.senha());
-				liUsuarios.adicionar(proprietario,proprietario.getCpf());
-				
+				liUsuarios.adicionar(proprietario, proprietario.getCpf());
 
 			}
 		} else {
 			viemNotificacoes.mgsUsuarioExistente();
 		}
-	telaPro.telaPro();
-}
+		telaPro.telaPro();
+	}
+
 	public void cadastroRestaurante() {
 		Restaurantes restaurante = new Restaurantes();
-		
+		restaurante.setNome(dRestaurante.nomeRestaurante());
+		restaurante.setHorarioFucionamento(dRestaurante.horarioFuncionamento());
+		restaurante.setLocalização(dRestaurante.endereco());
+		restaurante.setTelefoneContato(dRestaurante.telefoneContato());
+
 	}
 }
