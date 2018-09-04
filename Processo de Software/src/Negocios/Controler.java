@@ -7,10 +7,10 @@ import Viem.ViemNotificacoes;
 import Viem.ViemPropritario;
 
 public class Controler {
-	ViemCadastro viemCadastro;
-	ViemNotificacoes viemNotificacoes;
-	AutenticarDados autenticacao;
-	ViemPropritario telaPro;
+	ViemCadastro viemCadastro = new ViemCadastro();
+	ViemNotificacoes viemNotificacoes = new ViemNotificacoes();
+	AutenticarDados autenticacao = new AutenticarDados();
+	ViemPropritario telaPro = new ViemPropritario();
 	private Hash liUsuarios = new Hash();
 
 	public void cadastraProprieatrio() {
