@@ -8,7 +8,7 @@ public class Proprietario {
 	private String cpf;
 	private String contatoProprietario;
 	private int Senha;
-	private ArrayList<Restaurantes> restaurante;
+	public ArrayList<Restaurantes> restaurante;
 	
 	public Proprietario(String nome,String email, String cpf,String contato,int senha) {
 		setNomeProprietario(nome);
@@ -18,7 +18,7 @@ public class Proprietario {
 		setSenha(senha);
 		
 	}
-
+	
 	public Proprietario() {
 		super();
 	}
@@ -64,5 +64,19 @@ public class Proprietario {
 	public void setSenha(int senha) {
 		Senha = senha;
 	}
+
+	public ArrayList<Restaurantes> getRestaurante() {
+		return restaurante;
+	}
+
+	public void setRestaurante(ArrayList<Restaurantes> restaurante) {
+		this.restaurante = restaurante;
+	}
+	
+	public void setRestaurante(Restaurantes restaurantes) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

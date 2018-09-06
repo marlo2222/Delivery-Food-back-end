@@ -13,8 +13,13 @@ public class ViemDadosRestaurante {
 	}
 
 	public String horarioFuncionamento() {
-		System.out.println("Digite o horaario de funcionamento do restaurante:");
-		return input.nextLine();
+		String texto ="";
+		System.out.println("Informe o horario de funcionamento do restaurante:");
+		System.out.println("Horario de abertura");
+		texto+="aberto de:"+input.nextLine();
+		System.out.println("Horario de encerramento:");
+		texto+= " até as "+input.nextLine();
+		return texto;
 	}
 
 	public String telefoneContato() {

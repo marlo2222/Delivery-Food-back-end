@@ -10,4 +10,11 @@ public class ViemNotificacoes {
 	public void msgUsuarioInvalido() {
 		System.out.println("usuario invalido");
 	}
+	public void msgRestauranteCad() {
+		System.out.println("Nao foi possivel cadastra o restaurante.\n estabelecimento já cadastrado no sistema");
+	}
+	public void Listausuarios(String lista){
+		System.out.println(lista);
+		
+	}
 }

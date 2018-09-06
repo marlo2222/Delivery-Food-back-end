@@ -1,11 +1,6 @@
 package Negocios;
 
-import Viem.PreTela;
-import Viem.PreTelaProprietario;
-import Viem.ViemDadosRestaurante;
-import Viem.ViemDadoscadastro;
-import Viem.ViemNotificacoes;
-import Viem.ViemPropritario;
+import Viem.*;
 
 public class Controler {
 	public Model model;
@@ -84,11 +79,14 @@ public class Controler {
 		do {
 			opcao = menuPro.menuPropri();
 			switch (opcao) {
+			//visualizar lista
 			case '1':
-
+				notificacoes.Listausuarios(model.visualizaRestaurantes());
 				break;
+				//cadastro restaurante
 			case '2':
-				model.cadastroRestaurante(dRestaurante.nomeRestaurante(),dRestaurante.horarioFuncionamento(),dRestaurante.endereco(),dRestaurante.telefoneContato());
+				if(model.cadastroRestaurante(dRestaurante.nomeRestaurante(),dRestaurante.horarioFuncionamento(),dRestaurante.endereco(),dRestaurante.telefoneContato())==false) {
+				notificacoes.msgRestauranteCad();}
 				break;
 			case '3':
 
