@@ -10,6 +10,20 @@ public class Proprietario {
 	private String rgProprietario;
 	private int Senha;
 	private ArrayList<Restaurantes> restaurante;
+	
+	public Proprietario(String nome,String email, String cpf,String contato, String rg,int senha) {
+		setNomeProprietario(nome);
+		setEmailProprietario(email);
+		setCpf(cpf);
+		setContatoProprietario(contato);
+		setRgProprietario(rg);
+		setSenha(senha);
+		
+	}
+
+	public Proprietario() {
+		super();
+	}
 
 	public String getNomeProprietario() {
 		return nomeProprietario;

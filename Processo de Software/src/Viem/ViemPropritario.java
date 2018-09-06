@@ -2,11 +2,11 @@ package Viem;
 
 import java.util.Scanner;
 
-import Negocios.Controler;
+import Negocios.Model;
 
 public class ViemPropritario {
 	public void telaPro() {
-		Controler control = new Controler();
+		Model control = new Model();
 		Scanner input = new Scanner(System.in);
 		System.out.println("cadastra restaurante");
 		System.out.println();
