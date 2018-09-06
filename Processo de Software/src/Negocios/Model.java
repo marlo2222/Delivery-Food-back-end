@@ -8,46 +8,53 @@ import Viem.ViemNotificacoes;
 import Viem.ViemPropritario;
 
 public class Model {
-	ViemDadoscadastro viemCadastro = new ViemDadoscadastro();
-	ViemNotificacoes viemNotificacoes = new ViemNotificacoes();
-	AutenticarDados autenticacao = new AutenticarDados();
-	ViemPropritario telaPro = new ViemPropritario();
-	ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
+	private AutenticarDados autenticacao = new AutenticarDados();
 	private Hash liUsuarios = new Hash();
-	Object usuario;
-	public Model() {
-		liUsuarios.adicionar(new Proprietario("marlo","marlo@gmail.com","06314815320","92424095","2233445",1234),"06314815320");
+	private Controler controler;
+	private Object usuario;
+
+	public Model(Controler controler) {
+		liUsuarios.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", 1234),
+				"06314815320");
+		this.controler = controler;
 	}
 
-	public void cadastraProprieatrio() {
+	public boolean cadastraProprieatrio(String nome, String email, String cpf, String telefone) {
 
 		Proprietario proprietario = new Proprietario();
-
-		proprietario.setNomeProprietario(viemCadastro.nome());
-		proprietario.setEmailProprietario(viemCadastro.email());
-		proprietario.setCpf(viemCadastro.cnpj());
-		proprietario.setContatoProprietario(viemCadastro.telefone());
-		proprietario.setRgProprietario(viemCadastro.rg());
+		
+		proprietario.setNomeProprietario(nome);
+		proprietario.setEmailProprietario(email);
+		proprietario.setCpf(cpf);
+		proprietario.setContatoProprietario(telefone);
 
 		if (liUsuarios.buscar(proprietario.getCpf(), proprietario.getNomeProprietario()) == true) {
 			if (autenticacao.AutenticarDados(proprietario) == true) {
-				proprietario.setSenha(viemCadastro.senha());
+				proprietario.setSenha(controler.definirSenha());
 				liUsuarios.adicionar(proprietario, proprietario.getCpf());
-
+				return true;
 			}
-		} else {
-			viemNotificacoes.mgsUsuarioExistente();
 		}
-		telaPro.telaPro();
+		return false;
 	}
 
-	public void cadastroRestaurante() {
+	public void cadastroRestaurante(String nome, String horario, Endereco endereco, String contato) {
 		Restaurantes restaurante = new Restaurantes();
-		restaurante.setNome(dRestaurante.nomeRestaurante());
-		restaurante.setHorarioFucionamento(dRestaurante.horarioFuncionamento());
-		restaurante.setLocalização(dRestaurante.endereco());
-		restaurante.setTelefoneContato(dRestaurante.telefoneContato());
+		restaurante.setNome(nome);
+		restaurante.setHorarioFucionamento(horario);
+		restaurante.setLocalização(endereco);
+		restaurante.setTelefoneContato(contato);
+		//falta adicionar o restaurante na lista de restaurantes...
 
 	}
-	//public void logar(String usuario)
+
+	public boolean logar(String cpf, int senha) {
+		Proprietario pro = liUsuarios.buscarSenha(cpf, senha);
+		if (pro != null) {
+			usuario = pro;
+			return true;
+		}
+		return false;
+	}
+
 }

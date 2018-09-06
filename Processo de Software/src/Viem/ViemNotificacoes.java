@@ -7,4 +7,7 @@ public class ViemNotificacoes {
 	public void mgsUsuarioCadastrado() {
 		System.out.println("Usuario Cadastrado com sucesso");
 	}
+	public void msgUsuarioInvalido() {
+		System.out.println("usuario invalido");
+	}
 }

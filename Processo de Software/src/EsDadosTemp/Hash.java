@@ -13,7 +13,7 @@ public class Hash {
 
 	public void adicionar(Proprietario proprietario, String chave) {
 		int indice = h(dig(chave));
-		
+
 		if (hash[indice] == null)
 			hash[indice] = new ListaEnHash();
 		hash[indice].adicionar(proprietario);
@@ -28,9 +28,10 @@ public class Hash {
 					return aux.proprietario;
 			}
 		}
-		//oi
 		return null;
-	}public boolean buscar(String cpf, String usuario) {
+	}
+
+	public boolean buscar(String cpf, String usuario) {
 		int indice = h(dig(cpf));
 		if (hash[indice] != null) {
 			for (NoHash aux = hash[indice].inicio; aux != null; aux = aux.prox) {
@@ -41,11 +42,22 @@ public class Hash {
 		return true;
 	}
 	
-	
-	public int dig(String cpf) {
+	public Proprietario buscarSenha(String cpf, int chave) {
+		int indice = h(dig(cpf));
+		if (hash[indice] != null) {
+			for (NoHash aux = hash[indice].inicio; aux != null; aux = aux.prox) {
+				if (aux.proprietario.getSenha() == chave && aux.proprietario.getCpf().equals(cpf))
+					return aux.proprietario;
+			}
+		}
+		return null;
+	}
+
+
+	private int dig(String cpf) {
 		String num = "";
-		for(int i = 2; i <cpf.length(); i++)
-			num+= cpf.charAt(i);
+		for (int i = 2; i < cpf.length(); i++)
+			num += cpf.charAt(i);
 		return Integer.parseInt(num);
 	}
 

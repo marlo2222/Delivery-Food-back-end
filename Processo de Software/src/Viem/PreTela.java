@@ -16,10 +16,13 @@ public class PreTela {
 		iniciar();
 	}
 	public void iniciar() {
+		controler.acaoTelaInicial();
+	}
+	public char telaInicial() {
 		System.out.println("1-logar");
 		System.out.println("2-cadastrar");
 		System.out.println("3-cadastre seu restaurante");
 		System.out.println("4-sair");
-		controler.acaoTelaInicial(input.nextLine().charAt(0));
+		return(input.nextLine().charAt(0));
 	}
 }

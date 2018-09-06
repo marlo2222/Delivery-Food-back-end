@@ -7,16 +7,14 @@ public class Proprietario {
 	private String emailProprietario;
 	private String cpf;
 	private String contatoProprietario;
-	private String rgProprietario;
 	private int Senha;
 	private ArrayList<Restaurantes> restaurante;
 	
-	public Proprietario(String nome,String email, String cpf,String contato, String rg,int senha) {
+	public Proprietario(String nome,String email, String cpf,String contato,int senha) {
 		setNomeProprietario(nome);
 		setEmailProprietario(email);
 		setCpf(cpf);
 		setContatoProprietario(contato);
-		setRgProprietario(rg);
 		setSenha(senha);
 		
 	}
@@ -57,14 +55,6 @@ public class Proprietario {
 
 	public void setContatoProprietario(String contatoProprietario) {
 		if(contatoProprietario != null )this.contatoProprietario = contatoProprietario;
-	}
-
-	public String getRgProprietario() {
-		return rgProprietario;
-	}
-
-	public void setRgProprietario(String rgProprietario) {
-		if(rgProprietario != null)this.rgProprietario = rgProprietario;
 	}
 
 	public int getSenha() {
