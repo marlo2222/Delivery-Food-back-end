@@ -4,8 +4,9 @@ import java.util.Scanner;
 
 import Negocios.Proprietario;
 
-public class ViemCadastro {
+public class ViemDadoscadastro {
 	Scanner input = new Scanner(System.in);
+	Scanner inputInt = new Scanner(System.in);
 
 	public String nome() {
 		System.out.println("digite seu nome:");
@@ -33,7 +34,7 @@ public class ViemCadastro {
 	}
 	public int senha() {
 		System.out.println("Defina sua senha:");
-		return input.nextInt();
+		return inputInt.nextInt();
 	}
 	
 }
