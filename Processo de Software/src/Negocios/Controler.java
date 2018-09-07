@@ -89,7 +89,8 @@ public class Controler {
 				notificacoes.msgRestauranteCad();}
 				break;
 			case '3':
-
+				//não é aqui, remaneja essa chamada ao usuario
+				notificacoes.ListaRestaurantes(model.listaRest());
 				break;
 
 			default:

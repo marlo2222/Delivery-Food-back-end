@@ -3,6 +3,7 @@ package Negocios;
 import java.util.ArrayList;
 
 import EsDadosTemp.Hash;
+import EsDadosTemp.NoHash;
 import Verificacoes.AutenticarDados;
 import Viem.ViemDadosRestaurante;
 import Viem.ViemDadoscadastro;
@@ -18,9 +19,32 @@ public class Model {
 	public Model(Controler controler) {
 		liUsuarios.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", 1234),
 				"06314815320");
+		liUsuarios.adicionar(new Proprietario("maria", "maria@gmail.com", "09876543212", "92424095", 1234),
+				"09876543212");
 		this.controler = controler;
 	}
-	//cadastrando proprietarios
+	//retornando um lista de restaurantes para o usuario
+	public String listaRest() {
+		int cont = 1;
+		String lista = "Nome restaurante--Horario de funcionamento--telefone para contato:\n";
+		for (int indice = 0; indice < liUsuarios.length(); indice++) {
+			if (liUsuarios.hash[indice] != null) {
+				for (NoHash aux = liUsuarios.hash[indice].inicio; aux != null; aux = aux.prox) {
+					ArrayList<Restaurantes> rest = aux.proprietario.restaurante;
+					if (rest != null) {
+						for (int i = 0; i < rest.size(); i++) {
+							lista += (cont++)+"->"+rest.get(i).getNome()+ "   "+ rest.get(i).getHorarioFucionamento()
+									+"   "+ rest.get(i).getTelefoneContato()+"\n";
+						}
+					}
+				}
+
+			}
+		}
+		return lista;
+	}
+
+	// cadastrando proprietarios
 	public boolean cadastraProprieatrio(String nome, String email, String cpf, String telefone) {
 
 		Proprietario proprietario = new Proprietario();
@@ -39,7 +63,8 @@ public class Model {
 		}
 		return false;
 	}
-	//adicionando restaurante
+
+	// adicionando restaurante
 	public boolean cadastroRestaurante(String nome, String horario, Endereco endereco, String contato) {
 		Restaurantes restaurante = new Restaurantes();
 		restaurante.setNome(nome);
@@ -62,15 +87,19 @@ public class Model {
 		}
 		return false;
 	}
-    //verificando existencia do restaurante
+
+	// verificando existencia do restaurante
 	private boolean restauranteInexistente(ArrayList<Restaurantes> restaurante, Restaurantes rest) {
 		for (int i = 0; i < restaurante.size(); i++) {
-			if (restaurante.get(i).getNome() == rest.getNome() && restaurante.get(i).getLocalização() == rest.getLocalização());
+			if (restaurante.get(i).getNome() == rest.getNome()
+					&& restaurante.get(i).getLocalização() == rest.getLocalização())
+				;
 			return false;
 		}
 		return true;
 	}
-	//chamada para autenticação do usuario
+
+	// chamada para autenticação do usuario
 	public boolean logar(String cpf, int senha) {
 		Proprietario pro = liUsuarios.buscarSenha(cpf, senha);
 		if (pro != null) {
@@ -79,14 +108,15 @@ public class Model {
 		}
 		return false;
 	}
-	//retorna uma lista de restaurantes
+
+	// retorna uma lista de restaurantes
 	public String visualizaRestaurantes() {
 		String lista = "";
 		if (usuario.restaurante == null || usuario.restaurante.isEmpty()) {
 			return "Lista esta Vazia";
 		}
 		for (int i = 0; i < usuario.restaurante.size(); i++) {
-			lista += 1 + i + "-" + usuario.restaurante.get(i).getNome()+"\n";
+			lista += 1 + i + "-" + usuario.restaurante.get(i).getNome() + "\n";
 		}
 		return lista;
 	}

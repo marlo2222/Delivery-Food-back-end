@@ -11,8 +11,10 @@ public class AutenticarDados {
 	ViemValidacao viem = new ViemValidacao();
 
 	public boolean AutenticarDados(Proprietario prop) {
+		//desativação momentanea da verificação do cpf 
+		//&& verificarCPF(prop.getCpf()) == true
 		if (verificarEmail(prop.getEmailProprietario()) == true && verificarNome(prop.getNomeProprietario()) == true
-				&& verificarTelefone(prop.getContatoProprietario()) == true && verificarCPF(prop.getCpf()) == true) {
+				&& verificarTelefone(prop.getContatoProprietario()) == true) {
 		return true;}
 		return false;
 	}

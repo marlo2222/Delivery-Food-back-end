@@ -17,4 +17,7 @@ public class ViemNotificacoes {
 		System.out.println(lista);
 		
 	}
+	public void ListaRestaurantes(String lista) {
+		System.out.println(lista);
+	}
 }
