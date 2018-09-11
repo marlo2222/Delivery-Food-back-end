@@ -19,8 +19,8 @@ public class Hash {
 		getHash()[indice].adicionar(proprietario);
 
 	}
-
-	public Proprietario buscarSenha(String cpf, int chave, String usuario) {
+	//nao esta sendo usado!!!!!!
+	/*public Proprietario buscarSenha(String cpf, int chave, String usuario) {
 		int indice = h(dig(cpf));
 		if (getHash()[indice] != null) {
 			for (NoHash aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {
@@ -29,7 +29,7 @@ public class Hash {
 			}
 		}
 		return null;
-	}
+	}*/
 	//busca no momento do cadastro para saber se aquele usuario ja existe
 	public boolean buscar(String cpf, String usuario) {
 		int indice = h(dig(cpf));
@@ -41,7 +41,7 @@ public class Hash {
 		}
 		return true;
 	}
-	//busca no momento de autenticação ppara saber se para aqueles dados existe um user cadastrado
+	//busca no momento de autenticaçã
 	public Proprietario buscarSenha(String cpf, int chave) {
 		int indice = h(dig(cpf));
 		if (getHash()[indice] != null) {

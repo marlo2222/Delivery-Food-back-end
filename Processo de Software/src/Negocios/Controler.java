@@ -19,7 +19,7 @@ public class Controler {
 	public Controler() {
 		super();
 	}
-
+	//controler inicial, primeiro menu
 	public void acaoTelaInicial() {
 		char opcao;
 		do {
@@ -45,7 +45,7 @@ public class Controler {
 			}
 		} while (opcao != '4');
 	}
-
+	//controle da tela cadastra restaurante
 	public void telaProprietarioLogin() {
 		char opcao;
 		do {
@@ -73,7 +73,7 @@ public class Controler {
 
 		} while (opcao != '3');
 	}
-
+	//tela depois que o proprietario se loga
 	public void telaProprietario() {
 		char opcao;
 		do {
