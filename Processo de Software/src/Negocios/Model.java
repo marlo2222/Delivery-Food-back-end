@@ -49,12 +49,12 @@ public class Model {
 
 		Proprietario proprietario = new Proprietario();
 
-		proprietario.setNomeProprietario(nome);
-		proprietario.setEmailProprietario(email);
+		proprietario.setNome(nome);
+		proprietario.setEmail(email);
 		proprietario.setCpf(cpf);
-		proprietario.setContatoProprietario(telefone);
+		proprietario.setContato(telefone);
 
-		if (liUsuarios.buscar(proprietario.getCpf(), proprietario.getNomeProprietario()) == true) {
+		if (liUsuarios.buscar(proprietario.getCpf(), proprietario.getNome()) == true) {
 			if (autenticacao.AutenticarDados(proprietario) == true) {
 				proprietario.setSenha(controler.definirSenha());
 				liUsuarios.adicionar(proprietario, proprietario.getCpf());
