@@ -9,7 +9,8 @@ public class Controler {
 	public ViemDadoscadastro dados = new ViemDadoscadastro();
 	public ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
 	public PreTelaProprietario telaPro = new PreTelaProprietario();
-	public ViemPropritario menuPro = new ViemPropritario();
+	public TelaPrincipalProprietario menuPro = new TelaPrincipalProprietario();
+	public TelaEdicaoRestaurante telaEdicaoRest = new TelaEdicaoRestaurante();
 
 	public Controler(Model model, PreTela preTela) {
 		this.model = model;
@@ -19,7 +20,8 @@ public class Controler {
 	public Controler() {
 		super();
 	}
-	//controler inicial, primeiro menu
+
+	// controler inicial, primeiro menu
 	public void acaoTelaInicial() {
 		char opcao;
 		do {
@@ -27,7 +29,7 @@ public class Controler {
 			switch (opcao) {
 			// logar
 			case '1':
-				if (model.logar(dados.cnpj(), dados.senha()) == false) {
+				if (model.logar(dados.cpf(), dados.senha()) == false) {
 					notificacoes.msgUsuarioInvalido();
 				} else {
 					telaProprietario();
@@ -45,23 +47,24 @@ public class Controler {
 			}
 		} while (opcao != '4');
 	}
-	//controle da tela cadastra restaurante
+
+	// controle da tela cadastra restaurante
 	public void telaProprietarioLogin() {
 		char opcao;
 		do {
 			opcao = telaPro.menuLogin();
 			switch (opcao) {
-			//logar proprietario
+			// logar proprietario
 			case '1':
-				if (model.logar(dados.cnpj(), dados.senha()) == false) {
+				if (model.logar(dados.cpf(), dados.senha()) == false) {
 					notificacoes.msgUsuarioInvalido();
 				} else {
 					telaProprietario();
 				}
 				break;
-				//cadastra proprietario
+			// cadastra proprietario
 			case '2':
-				if (model.cadastraProprieatrio(dados.nome(), dados.email(), dados.cnpj(), dados.telefone()) == true) {
+				if (model.cadastraProprieatrio(dados.nome(), dados.email(), dados.cpf(), dados.telefone()) == true) {
 					notificacoes.mgsUsuarioCadastrado();
 					telaProprietario();
 				} else
@@ -73,26 +76,28 @@ public class Controler {
 
 		} while (opcao != '3');
 	}
-	//tela depois que o proprietario se loga
+
+	// tela depois que o proprietario se loga
 	public void telaProprietario() {
 		char opcao;
 		do {
 			opcao = menuPro.menuPropri();
 			switch (opcao) {
-			//visualizar lista
+			// visualizar lista
 			case '1':
 				notificacoes.Listausuarios(model.visualizaRestaurantes());
 				break;
-				//cadastro restaurante
+			// cadastro restaurante
 			case '2':
-				if(model.cadastroRestaurante(dRestaurante.nomeRestaurante(),dRestaurante.horarioFuncionamento(),dRestaurante.endereco(),dRestaurante.telefoneContato())==false) {
-				notificacoes.msgRestauranteCad();}
+				if (model.cadastroRestaurante(dRestaurante.nomeRestaurante(), dRestaurante.horarioFuncionamento(),
+						dRestaurante.endereco(), dRestaurante.telefoneContato()) == false) {
+					notificacoes.msgRestauranteCad();
+				}
 				break;
 			case '3':
-				//não é aqui, remaneja essa chamada ao usuario
-				notificacoes.ListaRestaurantes(model.listaRest());
+				// chamada de edicao de restaurante.
+				telaEdicaoRest();
 				break;
-
 			default:
 				break;
 			}
@@ -100,7 +105,34 @@ public class Controler {
 		} while (opcao != '4');
 	}
 
+	public void telaEdicaoRest() {
+		char opcao;
+		do {
+			opcao = telaEdicaoRest.menuEditarRest();
+			switch (opcao) {
+			case '1':
+
+				break;
+			case '2':
+				String lista = model.listaRest();
+				if (lista != "") {
+					notificacoes.msgRemoverRestaurante(model.revomerRestaurante(notificacoes.Lista(lista)));
+				}else {
+					notificacoes.msgRemoverRestaurante("Lista vazia");
+				}
+				break;
+
+			default:
+				break;
+			}
+		} while (opcao != '3');
+	}
+
 	public int definirSenha() {
 		return dados.senha();
+	}
+
+	public String DefinirCpf() {
+		return dados.cpf();
 	}
 }

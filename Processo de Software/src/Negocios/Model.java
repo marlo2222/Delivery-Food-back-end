@@ -8,7 +8,7 @@ import Verificacoes.AutenticarDados;
 import Viem.ViemDadosRestaurante;
 import Viem.ViemDadoscadastro;
 import Viem.ViemNotificacoes;
-import Viem.ViemPropritario;
+import Viem.TelaPrincipalProprietario;
 
 public class Model {
 	private AutenticarDados autenticacao = new AutenticarDados();
@@ -23,18 +23,18 @@ public class Model {
 				"09876543212");
 		this.controler = controler;
 	}
-	//retornando um lista de restaurantes para o usuario
+
+	// retornando um lista de restaurantes para o usuario
 	public String listaRest() {
 		int cont = 1;
-		String lista = "Nome restaurante--Horario de funcionamento--telefone para contato:\n";
+		String lista = "";
 		for (int indice = 0; indice < liUsuarios.length(); indice++) {
 			if (liUsuarios.hash[indice] != null) {
 				for (NoHash aux = liUsuarios.hash[indice].inicio; aux != null; aux = aux.prox) {
 					ArrayList<Restaurantes> rest = aux.proprietario.restaurante;
 					if (rest != null) {
 						for (int i = 0; i < rest.size(); i++) {
-							lista += (cont++)+"->"+rest.get(i).getNome()+ "   "+ rest.get(i).getHorarioFucionamento()
-									+"   "+ rest.get(i).getTelefoneContato()+"\n";
+							lista += (cont++) + "->" + rest.get(i).getNome() + "\n";
 						}
 					}
 				}
@@ -119,5 +119,19 @@ public class Model {
 			lista += 1 + i + "-" + usuario.restaurante.get(i).getNome() + "\n";
 		}
 		return lista;
+	}
+
+	public String revomerRestaurante(int indice) {
+		if (usuario.restaurante != null) {
+			if (!usuario.restaurante.isEmpty()) {
+				if (controler.definirSenha() == usuario.getSenha()
+						&& indice <= usuario.restaurante.size()) {
+					usuario.restaurante.remove(indice - 1);
+					return "restaurante removido com sucesso";
+
+				}
+			}
+		}
+		return "não foi possivel remover o restaurante";
 	}
 }
