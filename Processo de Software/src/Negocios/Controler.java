@@ -5,15 +5,23 @@ import Viem.*;
 public class Controler {
 	public Model model;
 	public PreTela preTela;
+	//public PreTelaEnderecoAlternativo preTelaEnderecoAlternativo;
 	public ViemNotificacoes notificacoes = new ViemNotificacoes();
 	public ViemDadoscadastro dados = new ViemDadoscadastro();
 	public ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
 	public PreTelaProprietario telaPro = new PreTelaProprietario();
 	public ViemPropritario menuPro = new ViemPropritario();
+	public PreTelaEnderecoAlternativo preTelaEnderecoAlternativo;
+	public ViemEnderecoAlternativo endAlternativo = new ViemEnderecoAlternativo();
 
 	public Controler(Model model, PreTela preTela) {
 		this.model = model;
 		this.preTela = preTela;
+	}
+	
+	public Controler(Model model, PreTelaEnderecoAlternativo preTelaEnderecoAlternativo) {
+		this.model = model;
+		this.preTelaEnderecoAlternativo = preTelaEnderecoAlternativo;
 	}
 
 	public Controler() {
@@ -97,6 +105,27 @@ public class Controler {
 				break;
 			}
 
+		} while (opcao != '4');
+	}
+	
+	public void acaoTelaEnderecoAlternativo() {
+		char opcao;
+		do {
+			opcao = preTelaEnderecoAlternativo.TelaDeEntrega();
+			switch (opcao) {
+			case '1':
+				// usar endereco cadastrado 
+				break;
+			case '2':
+				if(model.cadastroEnderecoAlternativo(endAlternativo.nomeDarua(), endAlternativo.NumCasa(), endAlternativo.nomeDoBairro(), endAlternativo.nomeMunicipio(), endAlternativo.nomeEstado())==false){
+				endAlternativo.mgsEnderecoDeEntregaErro();
+				}
+				break;
+			case '3':
+				// sair da tela
+			default:
+				break;
+			}
 		} while (opcao != '4');
 	}
 

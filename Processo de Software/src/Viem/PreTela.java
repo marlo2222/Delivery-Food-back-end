@@ -15,9 +15,11 @@ public class PreTela {
 		this.controler = new Controler(model,this);
 		iniciar();
 	}
+	
 	public void iniciar() {
 		controler.acaoTelaInicial();
 	}
+	
 	public char telaInicial() {
 		System.out.println("1-logar");
 		System.out.println("2-cadastrar");

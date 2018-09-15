@@ -15,6 +15,7 @@ public class Model {
 	private Hash liUsuarios = new Hash();
 	private Controler controler;
 	private Proprietario usuario;
+	private Hash liRestaurantes = new Hash();
 
 	public Model(Controler controler) {
 		liUsuarios.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", 1234),
@@ -120,4 +121,20 @@ public class Model {
 		}
 		return lista;
 	}
+
+	//não estou conseguindo pensar em como validar sem ser pelo set essas strings, por isso ira retornar true por enquanto
+	//endereco alternativo
+	public boolean cadastroEnderecoAlternativo(String nomeDarua, String numCasa, String nomeDoBairro, String nomeMunicipio, String nomeEstado) {
+		Endereco endAux = new Endereco();
+		endAux.setRua(nomeDarua);
+		endAux.setNumero(numCasa);
+		endAux.setBairro(nomeDoBairro);
+		endAux.setMunicipio(nomeMunicipio);
+		endAux.setEstado(nomeEstado);
+		return true;
+	}
+	
+	
+	
+
 }
