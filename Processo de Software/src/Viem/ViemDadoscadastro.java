@@ -18,7 +18,7 @@ public class ViemDadoscadastro {
 		return input.nextLine();
 	}
 
-	public String cnpj() {
+	public String cpf() {
 		System.out.println("Digite seu Cpf:");
 		return input.nextLine();
 	}

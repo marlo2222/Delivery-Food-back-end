@@ -8,7 +8,7 @@ import Verificacoes.AutenticarDados;
 import Viem.ViemDadosRestaurante;
 import Viem.ViemDadoscadastro;
 import Viem.ViemNotificacoes;
-import Viem.ViemPropritario;
+import Viem.TelaPrincipalProprietario;
 
 public class Model {
 	private AutenticarDados autenticacao = new AutenticarDados();
@@ -24,18 +24,18 @@ public class Model {
 				"09876543212");
 		this.controler = controler;
 	}
-	//retornando um lista de restaurantes para o usuario
+
+	// retornando um lista de restaurantes para o usuario
 	public String listaRest() {
 		int cont = 1;
-		String lista = "Nome restaurante--Horario de funcionamento--telefone para contato:\n";
+		String lista = "";
 		for (int indice = 0; indice < liUsuarios.length(); indice++) {
 			if (liUsuarios.hash[indice] != null) {
 				for (NoHash aux = liUsuarios.hash[indice].inicio; aux != null; aux = aux.prox) {
 					ArrayList<Restaurantes> rest = aux.proprietario.restaurante;
 					if (rest != null) {
 						for (int i = 0; i < rest.size(); i++) {
-							lista += (cont++)+"->"+rest.get(i).getNome()+ "   "+ rest.get(i).getHorarioFucionamento()
-									+"   "+ rest.get(i).getTelefoneContato()+"\n";
+							lista += (cont++) + "->" + rest.get(i).getNome() + "\n";
 						}
 					}
 				}
@@ -50,12 +50,12 @@ public class Model {
 
 		Proprietario proprietario = new Proprietario();
 
-		proprietario.setNomeProprietario(nome);
-		proprietario.setEmailProprietario(email);
+		proprietario.setNome(nome);
+		proprietario.setEmail(email);
 		proprietario.setCpf(cpf);
-		proprietario.setContatoProprietario(telefone);
+		proprietario.setContato(telefone);
 
-		if (liUsuarios.buscar(proprietario.getCpf(), proprietario.getNomeProprietario()) == true) {
+		if (liUsuarios.buscar(proprietario.getCpf(), proprietario.getNome()) == true) {
 			if (autenticacao.AutenticarDados(proprietario) == true) {
 				proprietario.setSenha(controler.definirSenha());
 				liUsuarios.adicionar(proprietario, proprietario.getCpf());
@@ -136,5 +136,32 @@ public class Model {
 	
 	
 	
+
+
+	public String revomerRestaurante(int indice) {
+		if (usuario.restaurante != null) {
+			if (!usuario.restaurante.isEmpty()) {
+				if (controler.definirSenha() == usuario.getSenha() && indice <= usuario.restaurante.size()) {
+					usuario.restaurante.remove(indice - 1);
+					return "restaurante removido com sucesso";
+
+				}
+			}
+		}
+		return "não foi possivel remover o restaurante";
+	}
+
+	public void AtualizarRest(int posicao, String informacao) {
+		if(posicao == 1)
+			usuario.restaurante.get(posicao-1).setNome(informacao);
+		if(posicao == 2)
+			usuario.restaurante.get(posicao-1).setHorarioFucionamento(informacao);
+		if(posicao == 4)
+			usuario.restaurante.get(posicao-1).setTelefoneContato(informacao);
+	}
+
+	public void AtualizarRest(int posicao,Endereco endereco) {
+		usuario.restaurante.get(posicao-1).setLocalização(endereco);
+	}
 
 }

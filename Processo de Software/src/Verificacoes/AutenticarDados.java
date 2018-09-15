@@ -13,8 +13,8 @@ public class AutenticarDados {
 	public boolean AutenticarDados(Proprietario prop) {
 		//desativação momentanea da verificação do cpf 
 		//&& verificarCPF(prop.getCpf()) == true
-		if (verificarEmail(prop.getEmailProprietario()) == true && verificarNome(prop.getNomeProprietario()) == true
-				&& verificarTelefone(prop.getContatoProprietario()) == true) {
+		if (verificarEmail(prop.getEmail()) == true && verificarNome(prop.getNome()) == true
+				&& verificarTelefone(prop.getContato()) == true) {
 		return true;}
 		return false;
 	}
