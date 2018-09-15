@@ -32,4 +32,7 @@ public class ViemNotificacoes {
 		System.out.println(lista);
 		return inputInt.nextInt();
 	}
+	public void notificacao(String msg) {
+		System.out.println(msg);
+	}
 }

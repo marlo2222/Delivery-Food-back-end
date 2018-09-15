@@ -11,6 +11,7 @@ public class Controler {
 	public PreTelaProprietario telaPro = new PreTelaProprietario();
 	public TelaPrincipalProprietario menuPro = new TelaPrincipalProprietario();
 	public TelaEdicaoRestaurante telaEdicaoRest = new TelaEdicaoRestaurante();
+	public TelaEdicaoRestauranteEscolha telaEscolhaRest = new TelaEdicaoRestauranteEscolha();
 
 	public Controler(Model model, PreTela preTela) {
 		this.model = model;
@@ -77,7 +78,7 @@ public class Controler {
 		} while (opcao != '3');
 	}
 
-	// tela depois que o proprietario se loga
+	// controle apos o proprietario se logar
 	public void telaProprietario() {
 		char opcao;
 		do {
@@ -105,20 +106,41 @@ public class Controler {
 		} while (opcao != '4');
 	}
 
+	// Controle tela de edição
 	public void telaEdicaoRest() {
 		char opcao;
 		do {
 			opcao = telaEdicaoRest.menuEditarRest();
 			switch (opcao) {
+			// atualizar informaçoes
 			case '1':
-
+				String lista1 = model.listaRest();
+				int posicao,campo;
+				if (lista1 != "") {
+					posicao = telaEscolhaRest.selecionarRestEdicao(lista1);
+					campo = telaEscolhaRest.campoParaModificar();
+					if (campo == 1)
+						model.AtualizarRest(posicao, dRestaurante.nomeRestaurante());
+					if (campo == 2)
+						model.AtualizarRest(posicao, dRestaurante.horarioFuncionamento());
+					if (campo == 3)
+						model.AtualizarRest(posicao, dRestaurante.endereco());
+					if (campo == 4)
+						model.AtualizarRest(posicao, dRestaurante.telefoneContato());
+					if (campo > 4)
+						notificacoes.notificacao("opcao invalida");
+					
+				}else {
+					notificacoes.notificacao("Lista vazia");
+				}
 				break;
+			// remover restaurante:
 			case '2':
 				String lista = model.listaRest();
 				if (lista != "") {
-					notificacoes.msgRemoverRestaurante(model.revomerRestaurante(notificacoes.Lista(lista)));
-				}else {
-					notificacoes.msgRemoverRestaurante("Lista vazia");
+					notificacoes.notificacao(model.revomerRestaurante(notificacoes.Lista(lista)));
+				} else {
+					notificacoes.notificacao("Lista vazia");
 				}
 				break;
 

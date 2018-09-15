@@ -124,8 +124,7 @@ public class Model {
 	public String revomerRestaurante(int indice) {
 		if (usuario.restaurante != null) {
 			if (!usuario.restaurante.isEmpty()) {
-				if (controler.definirSenha() == usuario.getSenha()
-						&& indice <= usuario.restaurante.size()) {
+				if (controler.definirSenha() == usuario.getSenha() && indice <= usuario.restaurante.size()) {
 					usuario.restaurante.remove(indice - 1);
 					return "restaurante removido com sucesso";
 
@@ -133,5 +132,18 @@ public class Model {
 			}
 		}
 		return "não foi possivel remover o restaurante";
+	}
+
+	public void AtualizarRest(int posicao, String informacao) {
+		if(posicao == 1)
+			usuario.restaurante.get(posicao-1).setNome(informacao);
+		if(posicao == 2)
+			usuario.restaurante.get(posicao-1).setHorarioFucionamento(informacao);
+		if(posicao == 4)
+			usuario.restaurante.get(posicao-1).setTelefoneContato(informacao);
+	}
+
+	public void AtualizarRest(int posicao,Endereco endereco) {
+		usuario.restaurante.get(posicao-1).setLocalização(endereco);
 	}
 }
