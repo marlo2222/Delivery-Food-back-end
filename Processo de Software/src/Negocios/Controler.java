@@ -5,15 +5,14 @@ import Viem.*;
 public class Controler {
 	public Model model;
 	public PreTela preTela;
-	//public PreTelaEnderecoAlternativo preTelaEnderecoAlternativo;
 	public ViemNotificacoes notificacoes = new ViemNotificacoes();
 	public ViemDadoscadastro dados = new ViemDadoscadastro();
 	public ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
 	public PreTelaProprietario telaPro = new PreTelaProprietario();
-	//public ViemPropritario menuPro = new ViemPropritario();
+	//public ViemPropritario viemproprietario = new ViemPropritario();
 	public PreTelaEnderecoAlternativo preTelaEnderecoAlternativo;
 	public ViemEnderecoAlternativo endAlternativo = new ViemEnderecoAlternativo();
-	//public TelaPrincipalProprietario menuPro = new TelaPrincipalProprietario();
+	public TelaPrincipalProprietario menuPro = new TelaPrincipalProprietario();
 	public TelaEdicaoRestaurante telaEdicaoRest = new TelaEdicaoRestaurante();
 	public TelaEdicaoRestauranteEscolha telaEscolhaRest = new TelaEdicaoRestauranteEscolha();
 
@@ -90,11 +89,11 @@ public class Controler {
 
 	// controle apos o proprietario se logar
 	public void telaProprietario() {
-		//char opcao;
-		/*do {
+		char opcao;
+		do {
 			opcao = menuPro.menuPropri();
 			switch (opcao) {
-			 visualizar lista
+			
 			case '1':
 				notificacoes.Listausuarios(model.visualizaRestaurantes());
 				break;
@@ -113,7 +112,7 @@ public class Controler {
 				break;
 			}
 
-		} while (opcao != '4');*/
+		} while (opcao != '4');
 	}
 	
 	public void acaoTelaEnderecoAlternativo() {
