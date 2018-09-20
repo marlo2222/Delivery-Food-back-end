@@ -1,4 +1,4 @@
-package Negocios;
+package br.com.rango.controler;
 
 import java.util.ArrayList;
 

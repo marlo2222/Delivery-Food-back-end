@@ -1,6 +1,6 @@
-package EsDadosTemp;
+package br.com.rango.estruturasdados;
 
-import Negocios.Proprietario;
+import br.com.rango.controler.Proprietario;
 
 public class NoHash {
 	public NoHash prox, ant;

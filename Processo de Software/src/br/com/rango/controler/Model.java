@@ -1,14 +1,14 @@
-package Negocios;
+package br.com.rango.controler;
 
 import java.util.ArrayList;
 
-import EsDadosTemp.Hash;
-import EsDadosTemp.NoHash;
-import Verificacoes.AutenticarDados;
-import Viem.ViemDadosRestaurante;
-import Viem.ViemDadoscadastro;
-import Viem.ViemNotificacoes;
-import Viem.TelaPrincipalProprietario;
+import br.com.rango.estruturasdados.Hash;
+import br.com.rango.estruturasdados.NoHash;
+import br.com.rango.verificacoes.AutenticarDados;
+import br.com.rango.viens.TelaPrincipalProprietario;
+import br.com.rango.viens.ViemDadosRestaurante;
+import br.com.rango.viens.ViemDadoscadastro;
+import br.com.rango.viens.ViemNotificacoes;
 
 public class Model {
 	private AutenticarDados autenticacao = new AutenticarDados();

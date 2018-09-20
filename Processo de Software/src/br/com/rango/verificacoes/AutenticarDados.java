@@ -1,11 +1,11 @@
-package Verificacoes;
+package br.com.rango.verificacoes;
 
 import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import Negocios.Proprietario;
-import Viem.ViemValidacao;
+import br.com.rango.controler.Proprietario;
+import br.com.rango.viens.ViemValidacao;
 
 public class AutenticarDados {
 	ViemValidacao viem = new ViemValidacao();

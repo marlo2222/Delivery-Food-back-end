@@ -1,9 +1,9 @@
-package Viem;
+package br.com.rango.viens;
 
 import java.util.Scanner;
 
-import Negocios.Controler;
-import Negocios.Model;
+import br.com.rango.controler.Controler;
+import br.com.rango.controler.Model;
 
 public class PreTelaEnderecoAlternativo {
 	

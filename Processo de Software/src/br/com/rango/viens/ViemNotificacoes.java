@@ -1,4 +1,4 @@
-package Viem;
+package br.com.rango.viens;
 
 import java.util.Scanner;
 

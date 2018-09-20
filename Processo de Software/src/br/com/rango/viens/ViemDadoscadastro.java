@@ -1,8 +1,8 @@
-package Viem;
+package br.com.rango.viens;
 
 import java.util.Scanner;
 
-import Negocios.Proprietario;
+import br.com.rango.controler.Proprietario;
 
 public class ViemDadoscadastro {
 	Scanner input = new Scanner(System.in);

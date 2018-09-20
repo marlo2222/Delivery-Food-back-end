@@ -1,9 +1,9 @@
-package Negocios;
+package br.com.rango.controler;
 
 import java.util.Scanner;
 
-import EsDadosTemp.Hash;
-import Viem.PreTela;
+import br.com.rango.estruturasdados.Hash;
+import br.com.rango.viens.PreTela;
 
 public class MainTeste {
 	public static void main(String[] args) {

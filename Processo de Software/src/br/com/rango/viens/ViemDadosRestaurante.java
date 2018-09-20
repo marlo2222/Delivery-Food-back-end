@@ -1,8 +1,8 @@
-package Viem;
+package br.com.rango.viens;
 
 import java.util.Scanner;
 
-import Negocios.Endereco;
+import br.com.rango.controler.Endereco;
 
 public class ViemDadosRestaurante {
 	Scanner input = new Scanner(System.in);

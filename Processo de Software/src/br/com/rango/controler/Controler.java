@@ -1,6 +1,6 @@
-package Negocios;
+package br.com.rango.controler;
 
-import Viem.*;
+import br.com.rango.viens.*;
 
 public class Controler {
 	public Model model;

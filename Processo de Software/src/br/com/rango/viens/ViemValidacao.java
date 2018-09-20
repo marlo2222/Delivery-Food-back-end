@@ -1,4 +1,4 @@
-package Viem;
+package br.com.rango.viens;
 
 public class ViemValidacao {
 	public void msgValidacao() {
