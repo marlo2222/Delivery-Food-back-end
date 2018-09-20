@@ -2,7 +2,7 @@ package br.com.rango.model;
 
 import java.util.ArrayList;
 
-import br.com.rango.controler.Controler;
+import br.com.rango.controler.ControlerTelaInicial;
 import br.com.rango.estruturasdados.Hash;
 import br.com.rango.estruturasdados.NoHash;
 import br.com.rango.verificacoes.AutenticarDados;
@@ -14,11 +14,11 @@ import br.com.rango.viens.ViemNotificacoes;
 public class Model {
 	private AutenticarDados autenticacao = new AutenticarDados();
 	private Hash liUsuarios = new Hash();
-	private Controler controler;
+	private ControlerTelaInicial controler;
 	private Proprietario usuario;
 	private Hash liRestaurantes = new Hash();
 
-	public Model(Controler controler) {
+	public Model(ControlerTelaInicial controler) {
 		liUsuarios.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", 1234),
 				"06314815320");
 		liUsuarios.adicionar(new Proprietario("maria", "maria@gmail.com", "09876543212", "92424095", 1234),

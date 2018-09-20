@@ -2,7 +2,7 @@ package br.com.rango.viens;
 
 import java.util.Scanner;
 
-public class TelaEdicaoRestaurante {
+public class ViemEdicaoRestaurante {
 	Scanner input = new Scanner(System.in);
 	public char menuEditarRest() {
 		System.out.println("1- atualizar informações restaurante");

@@ -5,25 +5,25 @@ import br.com.rango.viens.*;
 
 public class Controler {
 	public Model model;
-	public PreTela preTela;
+	public TelaInicial preTela;
 	public ViemNotificacoes notificacoes = new ViemNotificacoes();
 	public ViemDadoscadastro dados = new ViemDadoscadastro();
 	public ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
-	public PreTelaProprietario telaPro = new PreTelaProprietario();
+	public PreTelaRestaurante telaPro = new PreTelaRestaurante();
 	//public ViemPropritario viemproprietario = new ViemPropritario();
-	public PreTelaEnderecoAlternativo preTelaEnderecoAlternativo;
+	public EnderecoAlternativo preTelaEnderecoAlternativo;
 	public ViemEnderecoAlternativo endAlternativo = new ViemEnderecoAlternativo();
 	public TelaPrincipalProprietario menuPro = new TelaPrincipalProprietario();
-	public TelaEdicaoRestaurante telaEdicaoRest = new TelaEdicaoRestaurante();
-	public TelaEdicaoRestauranteEscolha telaEscolhaRest = new TelaEdicaoRestauranteEscolha();
+	public ViemEdicaoRestaurante telaEdicaoRest = new ViemEdicaoRestaurante();
+	public ViemEscolhaModificacaoRestaurante telaEscolhaRest = new ViemEscolhaModificacaoRestaurante();
 
 
-	public Controler(Model model, PreTela preTela) {
+	public Controler(Model model, TelaInicial preTela) {
 		this.model = model;
 		this.preTela = preTela;
 	}
 	
-	public Controler(Model model, PreTelaEnderecoAlternativo preTelaEnderecoAlternativo) {
+	public Controler(Model model, EnderecoAlternativo preTelaEnderecoAlternativo) {
 		this.model = model;
 		this.preTelaEnderecoAlternativo = preTelaEnderecoAlternativo;
 	}

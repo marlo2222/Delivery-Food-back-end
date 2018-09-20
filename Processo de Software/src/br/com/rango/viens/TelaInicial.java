@@ -2,17 +2,17 @@ package br.com.rango.viens;
 
 import java.util.Scanner;
 
-import br.com.rango.controler.Controler;
+import br.com.rango.controler.ControlerTelaInicial;
 import br.com.rango.model.Model;
 
-public class PreTela {
+public class TelaInicial {
 	public Model model;
-	public Controler controler;
+	public ControlerTelaInicial controler;
 	Scanner input = new Scanner(System.in);
 	
-	public PreTela(Model model) {
+	public TelaInicial(Model model) {
 		this.model = model;
-		this.controler = new Controler(model,this);
+		this.controler = new ControlerTelaInicial(model,this);
 		iniciar();
 	}
 	

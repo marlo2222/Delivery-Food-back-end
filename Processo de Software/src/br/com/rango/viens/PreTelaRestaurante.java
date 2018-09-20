@@ -2,7 +2,7 @@ package br.com.rango.viens;
 
 import java.util.Scanner;
 
-public class PreTelaProprietario {
+public class PreTelaRestaurante {
 	Scanner input = new Scanner(System.in);
 	
 	public char menuLogin() {

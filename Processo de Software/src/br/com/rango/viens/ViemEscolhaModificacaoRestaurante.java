@@ -2,7 +2,7 @@ package br.com.rango.viens;
 
 import java.util.Scanner;
 
-public class TelaEdicaoRestauranteEscolha {
+public class ViemEscolhaModificacaoRestaurante {
 	Scanner input = new Scanner(System.in);
 	public int selecionarRestEdicao(String lista) {
 		System.out.println("Escolha o restaurante que deseja editar:");
