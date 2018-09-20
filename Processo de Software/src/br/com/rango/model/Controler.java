@@ -1,4 +1,4 @@
-package br.com.rango.controler;
+package br.com.rango.model;
 
 import br.com.rango.model.Model;
 import br.com.rango.viens.*;

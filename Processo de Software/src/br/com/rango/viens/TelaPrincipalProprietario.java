@@ -2,7 +2,7 @@ package br.com.rango.viens;
 
 import java.util.Scanner;
 
-import br.com.rango.controler.Model;
+import br.com.rango.model.Model;
 
 public class TelaPrincipalProprietario {
 	Scanner input = new Scanner(System.in);

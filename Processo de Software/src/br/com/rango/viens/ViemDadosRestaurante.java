@@ -2,7 +2,7 @@ package br.com.rango.viens;
 
 import java.util.Scanner;
 
-import br.com.rango.controler.Endereco;
+import br.com.rango.model.Endereco;
 
 public class ViemDadosRestaurante {
 	Scanner input = new Scanner(System.in);

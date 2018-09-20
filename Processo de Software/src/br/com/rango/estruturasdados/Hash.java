@@ -1,6 +1,6 @@
 package br.com.rango.estruturasdados;
 
-import br.com.rango.controler.Proprietario;
+import br.com.rango.model.Proprietario;
 
 public class Hash {
 	public ListaEnHash[] hash = new ListaEnHash[11];

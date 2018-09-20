@@ -4,7 +4,7 @@ import java.util.InputMismatchException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import br.com.rango.controler.Proprietario;
+import br.com.rango.model.Proprietario;
 import br.com.rango.viens.ViemValidacao;
 
 public class AutenticarDados {

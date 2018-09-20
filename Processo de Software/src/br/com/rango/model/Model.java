@@ -1,7 +1,8 @@
-package br.com.rango.controler;
+package br.com.rango.model;
 
 import java.util.ArrayList;
 
+import br.com.rango.controler.Controler;
 import br.com.rango.estruturasdados.Hash;
 import br.com.rango.estruturasdados.NoHash;
 import br.com.rango.verificacoes.AutenticarDados;

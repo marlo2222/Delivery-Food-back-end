@@ -2,7 +2,7 @@ package br.com.rango.viens;
 
 import java.util.Scanner;
 
-import br.com.rango.controler.Proprietario;
+import br.com.rango.model.Proprietario;
 
 public class ViemDadoscadastro {
 	Scanner input = new Scanner(System.in);

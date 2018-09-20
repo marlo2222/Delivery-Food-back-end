@@ -1,7 +1,8 @@
-package br.com.rango.controler;
+package br.com.rango.model;
 
 import java.util.Scanner;
 
+import br.com.rango.controler.Controler;
 import br.com.rango.estruturasdados.Hash;
 import br.com.rango.viens.PreTela;
 
