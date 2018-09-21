@@ -1,10 +1,10 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
 import java.util.Scanner;
 
 import br.com.rango.model.Proprietario;
 
-public class ViemDadoscadastro {
+public class ViewDadosCadastro {
 	Scanner input = new Scanner(System.in);
 	Scanner inputInt = new Scanner(System.in);
 

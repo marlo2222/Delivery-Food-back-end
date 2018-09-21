@@ -1,19 +1,19 @@
-package br.com.rango.controler;
+package br.com.rango.controller;
 
 import br.com.rango.model.Model;
-import br.com.rango.viens.TelaPrincipalProprietario;
-import br.com.rango.viens.ViemDadosRestaurante;
-import br.com.rango.viens.ViemNotificacoes;
+import br.com.rango.views.TelaPrincipalProprietario;
+import br.com.rango.views.ViewDadosRestaurante;
+import br.com.rango.views.ViewNotificacoes;
 
-public class ControleProprietario {
+public class ControllerProprietario {
 	public Model model;
 	public TelaPrincipalProprietario menuPro = new TelaPrincipalProprietario();
-	public ViemNotificacoes notificacoes = new ViemNotificacoes();
-	public ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
-	public ControleEdicaoRestaurante edicaoRestaurante;
-	public ControleProprietario(Model model) {
+	public ViewNotificacoes notificacoes = new ViewNotificacoes();
+	public ViewDadosRestaurante dRestaurante = new ViewDadosRestaurante();
+	public ControllerEdicaoRestaurante edicaoRestaurante;
+	public ControllerProprietario(Model model) {
 		this.model = model;
-		this.edicaoRestaurante = new ControleEdicaoRestaurante(model);
+		this.edicaoRestaurante = new ControllerEdicaoRestaurante(model);
 	}
 
 	public void telaProprietario() {

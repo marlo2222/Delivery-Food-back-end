@@ -1,6 +1,6 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
-public class ViemValidacao {
+public class ViewValidacao {
 	public void msgValidacao() {
 		System.out.println("estamos validando seus dados");
 	}

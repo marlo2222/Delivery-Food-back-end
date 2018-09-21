@@ -1,18 +1,18 @@
-package br.com.rango.controler;
+package br.com.rango.controller;
 
 import br.com.rango.model.Model;
-import br.com.rango.viens.PreTelaRestaurante;
-import br.com.rango.viens.ViemDadoscadastro;
-import br.com.rango.viens.ViemNotificacoes;
+import br.com.rango.views.PreTelaRestaurante;
+import br.com.rango.views.ViewDadosCadastro;
+import br.com.rango.views.ViewNotificacoes;
 
-public class ControleInicialRestaurante {
+public class ControllerInicialRestaurante {
 	public PreTelaRestaurante telaPro = new PreTelaRestaurante();
-	public ViemDadoscadastro dados = new ViemDadoscadastro();
-	public ViemNotificacoes notificacoes = new ViemNotificacoes();
-	public ControleProprietario controleProprietario;
+	public ViewDadosCadastro dados = new ViewDadosCadastro();
+	public ViewNotificacoes notificacoes = new ViewNotificacoes();
+	public ControllerProprietario controleProprietario;
 	public Model model;
 
-	public ControleInicialRestaurante(Model model, ControleProprietario controleproprietario) {
+	public ControllerInicialRestaurante(Model model, ControllerProprietario controleproprietario) {
 		this.model = model;
 		this.controleProprietario = controleproprietario;
 		

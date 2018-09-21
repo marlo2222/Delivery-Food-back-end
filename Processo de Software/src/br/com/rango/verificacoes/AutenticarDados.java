@@ -5,10 +5,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.rango.model.Proprietario;
-import br.com.rango.viens.ViemValidacao;
+import br.com.rango.views.ViewValidacao;
 
 public class AutenticarDados {
-	ViemValidacao viem = new ViemValidacao();
+	ViewValidacao viem = new ViewValidacao();
 
 	public boolean AutenticarDados(Proprietario prop) {
 		//desativação momentanea da verificação do cpf 

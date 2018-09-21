@@ -1,4 +1,4 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
 import java.util.Scanner;
 

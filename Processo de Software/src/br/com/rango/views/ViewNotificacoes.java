@@ -1,8 +1,8 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
 import java.util.Scanner;
 
-public class ViemNotificacoes {
+public class ViewNotificacoes {
 	Scanner input = new Scanner(System.in);
 	Scanner inputInt = new Scanner(System.in);
 	public void mgsUsuarioExistente() {

@@ -1,10 +1,10 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
 import java.util.Scanner;
 
 import br.com.rango.model.Endereco;
 
-public class ViemDadosRestaurante {
+public class ViewDadosRestaurante {
 	Scanner input = new Scanner(System.in);
 
 	public String nomeRestaurante() {

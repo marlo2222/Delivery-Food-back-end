@@ -1,8 +1,8 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
 import java.util.Scanner;
 
-public class ViemEdicaoRestaurante {
+public class ViewEdicaoRestaurante {
 	Scanner input = new Scanner(System.in);
 	public char menuEditarRest() {
 		System.out.println("1- atualizar informações restaurante");

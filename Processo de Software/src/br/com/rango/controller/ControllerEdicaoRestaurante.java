@@ -1,19 +1,19 @@
-package br.com.rango.controler;
+package br.com.rango.controller;
 
 import br.com.rango.model.Model;
-import br.com.rango.viens.ViemDadosRestaurante;
-import br.com.rango.viens.ViemEdicaoRestaurante;
-import br.com.rango.viens.ViemEscolhaModificacaoRestaurante;
-import br.com.rango.viens.ViemNotificacoes;
+import br.com.rango.views.ViewDadosRestaurante;
+import br.com.rango.views.ViewEdicaoRestaurante;
+import br.com.rango.views.ViewEscolhaModificacaoRestaurante;
+import br.com.rango.views.ViewNotificacoes;
 
-public class ControleEdicaoRestaurante {
+public class ControllerEdicaoRestaurante {
 	public Model model;
-	public ViemEdicaoRestaurante telaEdicaoRest = new ViemEdicaoRestaurante();
-	public ViemEscolhaModificacaoRestaurante telaEscolhaRest = new ViemEscolhaModificacaoRestaurante();
-	public ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
-	public ViemNotificacoes notificacoes = new ViemNotificacoes();
+	public ViewEdicaoRestaurante telaEdicaoRest = new ViewEdicaoRestaurante();
+	public ViewEscolhaModificacaoRestaurante telaEscolhaRest = new ViewEscolhaModificacaoRestaurante();
+	public ViewDadosRestaurante dRestaurante = new ViewDadosRestaurante();
+	public ViewNotificacoes notificacoes = new ViewNotificacoes();
 
-	public ControleEdicaoRestaurante(Model model) {
+	public ControllerEdicaoRestaurante(Model model) {
 		this.model = model;
 	}
 

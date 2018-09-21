@@ -1,8 +1,8 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
 import java.util.Scanner;
 
-public class ViemEnderecoAlternativo {
+public class ViewEnderecoAlternativo {
 	Scanner input = new Scanner(System.in);
 
 	public void mgsEnderecoDeEntregaErro() {

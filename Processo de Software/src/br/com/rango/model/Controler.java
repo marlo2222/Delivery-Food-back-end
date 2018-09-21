@@ -1,21 +1,21 @@
 package br.com.rango.model;
 
 import br.com.rango.model.Model;
-import br.com.rango.viens.*;
+import br.com.rango.views.*;
 
 public class Controler {
 	public Model model;
 	public TelaInicial preTela;
-	public ViemNotificacoes notificacoes = new ViemNotificacoes();
-	public ViemDadoscadastro dados = new ViemDadoscadastro();
-	public ViemDadosRestaurante dRestaurante = new ViemDadosRestaurante();
+	public ViewNotificacoes notificacoes = new ViewNotificacoes();
+	public ViewDadosCadastro dados = new ViewDadosCadastro();
+	public ViewDadosRestaurante dRestaurante = new ViewDadosRestaurante();
 	public PreTelaRestaurante telaPro = new PreTelaRestaurante();
 	//public ViemPropritario viemproprietario = new ViemPropritario();
 	public EnderecoAlternativo preTelaEnderecoAlternativo;
-	public ViemEnderecoAlternativo endAlternativo = new ViemEnderecoAlternativo();
+	public ViewEnderecoAlternativo endAlternativo = new ViewEnderecoAlternativo();
 	public TelaPrincipalProprietario menuPro = new TelaPrincipalProprietario();
-	public ViemEdicaoRestaurante telaEdicaoRest = new ViemEdicaoRestaurante();
-	public ViemEscolhaModificacaoRestaurante telaEscolhaRest = new ViemEscolhaModificacaoRestaurante();
+	public ViewEdicaoRestaurante telaEdicaoRest = new ViewEdicaoRestaurante();
+	public ViewEscolhaModificacaoRestaurante telaEscolhaRest = new ViewEscolhaModificacaoRestaurante();
 
 
 	public Controler(Model model, TelaInicial preTela) {

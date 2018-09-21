@@ -1,19 +1,19 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
 import java.util.Scanner;
 
-import br.com.rango.controler.ControlerTelaInicial;
+import br.com.rango.controller.ControllerTelaInicial;
 import br.com.rango.model.Model;
 
 public class EnderecoAlternativo {
 	
 	public Model model;
-	public ControlerTelaInicial controler;
+	public ControllerTelaInicial controler;
 	Scanner input = new Scanner(System.in);
 	
 	public EnderecoAlternativo(Model model) {
 		this.model = model;
-		this.controler = new ControlerTelaInicial(model,this);
+		this.controler = new ControllerTelaInicial(model,this);
 		iniciar();
 	}
 	

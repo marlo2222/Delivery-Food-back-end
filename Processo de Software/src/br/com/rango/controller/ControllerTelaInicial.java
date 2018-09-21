@@ -1,32 +1,32 @@
-package br.com.rango.controler;
+package br.com.rango.controller;
 
 import br.com.rango.model.Model;
-import br.com.rango.viens.*;
+import br.com.rango.views.*;
 
-public class ControlerTelaInicial {
+public class ControllerTelaInicial {
 	public Model model;
 	public TelaInicial preTela;
-	public ViemNotificacoes notificacoes = new ViemNotificacoes();
-	public ViemDadoscadastro dados = new ViemDadoscadastro();
+	public ViewNotificacoes notificacoes = new ViewNotificacoes();
+	public ViewDadosCadastro dados = new ViewDadosCadastro();
 	public EnderecoAlternativo preTelaEnderecoAlternativo;
-	public ViemEnderecoAlternativo endAlternativo = new ViemEnderecoAlternativo();
-	public ControleInicialRestaurante controlerestaurante;
-	public ControleProprietario controleProprietario;
+	public ViewEnderecoAlternativo endAlternativo = new ViewEnderecoAlternativo();
+	public ControllerInicialRestaurante controlerestaurante;
+	public ControllerProprietario controleProprietario;
 
-	public ControlerTelaInicial(Model model, TelaInicial preTela) {
+	public ControllerTelaInicial(Model model, TelaInicial preTela) {
 		this.model = model;
 		this.preTela = preTela;
-		this.controlerestaurante = new ControleInicialRestaurante(model, controleProprietario);
-		this.controleProprietario = new ControleProprietario(model);
+		this.controlerestaurante = new ControllerInicialRestaurante(model, controleProprietario);
+		this.controleProprietario = new ControllerProprietario(model);
 
 	}
 
-	public ControlerTelaInicial(Model model, EnderecoAlternativo preTelaEnderecoAlternativo) {
+	public ControllerTelaInicial(Model model, EnderecoAlternativo preTelaEnderecoAlternativo) {
 		this.model = model;
 		this.preTelaEnderecoAlternativo = preTelaEnderecoAlternativo;
 	}
 
-	public ControlerTelaInicial() {
+	public ControllerTelaInicial() {
 		super();
 	}
 

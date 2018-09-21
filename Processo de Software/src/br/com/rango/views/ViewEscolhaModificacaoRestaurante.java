@@ -1,8 +1,8 @@
-package br.com.rango.viens;
+package br.com.rango.views;
 
 import java.util.Scanner;
 
-public class ViemEscolhaModificacaoRestaurante {
+public class ViewEscolhaModificacaoRestaurante {
 	Scanner input = new Scanner(System.in);
 	public int selecionarRestEdicao(String lista) {
 		System.out.println("Escolha o restaurante que deseja editar:");
