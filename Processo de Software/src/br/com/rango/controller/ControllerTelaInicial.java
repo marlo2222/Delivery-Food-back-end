@@ -4,7 +4,7 @@ import br.com.rango.model.Model;
 import br.com.rango.views.*;
 
 public class ControllerTelaInicial {
-	public Model model;
+	private Model model;
 	public TelaInicial preTela;
 	public ViewNotificacoes notificacoes = new ViewNotificacoes();
 	public ViewDadosCadastro dados = new ViewDadosCadastro();
@@ -12,6 +12,10 @@ public class ControllerTelaInicial {
 	public ViewEnderecoAlternativo endAlternativo = new ViewEnderecoAlternativo();
 	public ControllerInicialRestaurante controlerestaurante;
 	public ControllerProprietario controleProprietario;
+
+	public ControllerTelaInicial() {
+		super();
+	}
 
 	public ControllerTelaInicial(Model model, TelaInicial preTela) {
 		this.model = model;
@@ -26,33 +30,29 @@ public class ControllerTelaInicial {
 		this.preTelaEnderecoAlternativo = preTelaEnderecoAlternativo;
 	}
 
-	public ControllerTelaInicial() {
-		super();
-	}
-
 	// controler inicial, primeiro menu
 	public void acaoTelaInicial() {
 		char opcao;
 		do {
 			opcao = preTela.telaInicial();
 			switch (opcao) {
-			// logar
+			// logar usuario
 			case '1':
 				if (model.logar(dados.cpf(), dados.senha()) == false) {
-					notificacoes.msgUsuarioInvalido();
+					notificacoes.notificacao("Usuario invalido!");
 				} else {
 					controleProprietario.telaProprietario();
 				}
 				break;
-			// cadastra
+			// cadastra usuario
 			case '2':
 
 				break;
 			// cadastra restaurante
 			case '3':
 				controlerestaurante.controleTelaLogin();
-				// telaProprietarioLogin();
 			default:
+				notificacoes.notificacao("Opção invalida!");
 				break;
 			}
 		} while (opcao != '4');
@@ -80,8 +80,6 @@ public class ControllerTelaInicial {
 			}
 		} while (opcao != '4');
 	}
-
-	// Controle tela de edição
 
 	public int definirSenha() {
 		return dados.senha();

@@ -135,21 +135,17 @@ public class Model {
 		return true;
 	}
 	
-	
-	
-
-
-	public String revomerRestaurante(int indice) {
+	public boolean revomerRestaurante(int indice) {
 		if (usuario.restaurante != null) {
 			if (!usuario.restaurante.isEmpty()) {
 				if (controler.definirSenha() == usuario.getSenha() && indice <= usuario.restaurante.size()) {
 					usuario.restaurante.remove(indice - 1);
-					return "restaurante removido com sucesso";
+					return true;
 
 				}
 			}
 		}
-		return "não foi possivel remover o restaurante";
+		return false;
 	}
 
 	public void AtualizarRest(int posicao, String informacao) {

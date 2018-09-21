@@ -11,6 +11,7 @@ public class ControllerProprietario {
 	public ViewNotificacoes notificacoes = new ViewNotificacoes();
 	public ViewDadosRestaurante dRestaurante = new ViewDadosRestaurante();
 	public ControllerEdicaoRestaurante edicaoRestaurante;
+
 	public ControllerProprietario(Model model) {
 		this.model = model;
 		this.edicaoRestaurante = new ControllerEdicaoRestaurante(model);
@@ -21,20 +22,23 @@ public class ControllerProprietario {
 		do {
 			opcao = menuPro.menuPropri();
 			switch (opcao) {
-			//visualizar restaurantes
+			// visualizar restaurantes
 			case '1':
-				notificacoes.Listausuarios(model.visualizaRestaurantes());
+				notificacoes.notificacao(model.visualizaRestaurantes());
 				break;
 			// cadastro restaurante
 			case '2':
 				if (model.cadastroRestaurante(dRestaurante.nomeRestaurante(), dRestaurante.horarioFuncionamento(),
 						dRestaurante.endereco(), dRestaurante.telefoneContato()) == false) {
-					notificacoes.msgRestauranteCad();
+					notificacoes.notificacao(
+							"Nao foi possivel cadastra o restaurante.\n estabelecimento já cadastrado no sistema");
+				} else {
+					notificacoes.notificacao("Restaurante cadastrado com sucesso!");
 				}
 				break;
+			// chamada de edicao de restaurante.
 			case '3':
-				// chamada de edicao de restaurante.
-		edicaoRestaurante.telaEdicaoRest();
+				edicaoRestaurante.telaEdicaoRest();
 				break;
 			default:
 				break;
@@ -42,5 +46,5 @@ public class ControllerProprietario {
 
 		} while (opcao != '4');
 	}
-	
+
 }

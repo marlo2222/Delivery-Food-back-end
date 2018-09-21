@@ -48,7 +48,10 @@ public class ControllerEdicaoRestaurante {
 			case '2':
 				String lista = model.listaRest();
 				if (lista != "") {
-					notificacoes.notificacao(model.revomerRestaurante(notificacoes.Lista(lista)));
+					if(model.revomerRestaurante(notificacoes.Lista(lista))==true) {
+					notificacoes.notificacao("Restaurante removido com sucesso!");
+				}else{
+						notificacoes.notificacao("Não foi possivel remover o restaurante");}
 				} else {
 					notificacoes.notificacao("Lista vazia");
 				}
