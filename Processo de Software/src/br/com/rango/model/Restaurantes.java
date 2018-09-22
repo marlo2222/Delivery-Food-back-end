@@ -8,37 +8,62 @@ public class Restaurantes {
 	private Endereco localização;
 	private String telefoneContato;
 	private ArrayList<Cardapio> cardapio;
+
+	public Restaurantes() {
+		super();
+	}
+
+	public Restaurantes(String nome, String horario, Endereco endereco, String contato) {
+		this.setNome(nome);
+		this.setHorarioFucionamento(horario);
+		this.setLocalização(endereco);
+		this.setTelefoneContato(contato);
+	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
-		if(nome!=null)this.nome = nome;
+		if (nome != null)
+			this.nome = nome;
 	}
+
 	public String getHorarioFucionamento() {
 		return horarioFucionamento;
 	}
+
 	public void setHorarioFucionamento(String horarioFucionamento) {
-		if(horarioFucionamento!=null)this.horarioFucionamento = horarioFucionamento;
+		if (horarioFucionamento != null)
+			this.horarioFucionamento = horarioFucionamento;
 	}
+
 	public Endereco getLocalização() {
 		return localização;
 	}
+
 	public void setLocalização(Endereco localização) {
-		if(localização!=null)this.localização = localização;
+		if (localização != null)
+			this.localização = localização;
 	}
+
 	public String getTelefoneContato() {
 		return telefoneContato;
 	}
+
 	public void setTelefoneContato(String telefoneContato) {
-		if(telefoneContato!=null)this.telefoneContato = telefoneContato;
+		if (telefoneContato != null)
+			this.telefoneContato = telefoneContato;
 	}
+
 	public ArrayList<Cardapio> getCardapio() {
 		return cardapio;
 	}
+
 	public void setCardapio(ArrayList<Cardapio> cardapio) {
 		this.cardapio = cardapio;
 	}
-	
-	//so pra ser besta
-	
+
+	// so pra ser besta
+
 }

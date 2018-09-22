@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import br.com.rango.model.Proprietario;
+import br.com.rango.model.Usuario;
 import br.com.rango.views.ViewValidacao;
 
 public class AutenticarDados {
@@ -15,6 +16,14 @@ public class AutenticarDados {
 		//&& verificarCPF(prop.getCpf()) == true
 		if (verificarEmail(prop.getEmail()) == true && verificarNome(prop.getNome()) == true
 				&& verificarTelefone(prop.getContato()) == true) {
+		return true;}
+		return false;
+	}
+	public boolean AutenticarDados(Usuario usuario) {
+		//desativação momentanea da verificação do cpf 
+		//&& verificarCPF(usuario.getCpf()) == true
+		if (verificarEmail(usuario.getEmail()) == true && verificarNome(usuario.getNome()) == true
+				&& verificarTelefone(usuario.getContato()) == true) {
 		return true;}
 		return false;
 	}

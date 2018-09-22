@@ -17,7 +17,7 @@ public class ControllerInicialRestaurante {
 	}
 	public ControllerInicialRestaurante(Model model, ControllerProprietario controleproprietario) {
 		this.model = model;
-		this.controleProprietario = controleproprietario;
+		this.controleProprietario = new ControllerProprietario(model);
 		
 	}
 
@@ -28,7 +28,7 @@ public class ControllerInicialRestaurante {
 			switch (opcao) {
 			// logar proprietario
 			case '1':
-				if (model.logar(dados.cpf(), dados.senha()) == false) {
+				if (model.logarProprietario(dados.cpf(), dados.senha()) == false) {
 					notificacoes.notificacao("Usuário invalido !");
 				} else {
 					notificacoes.notificacao("Bem vindo!");
@@ -40,8 +40,8 @@ public class ControllerInicialRestaurante {
 				if (model.cadastraProprieatrio(dados.nome(), dados.email(), dados.cpf(), dados.telefone()) == true) {
 					notificacoes.notificacao("Usuário cadastrado com sucesso!");
 					controleProprietario.telaProprietario();
-				} else
-					notificacoes.notificacao("Usuario ja castrado no sistema com essas informaçoes!");;
+				} else {
+					notificacoes.notificacao("Usuario ja castrado no sistema com essas informaçoes!");}
 				break;
 			default:
 				break;

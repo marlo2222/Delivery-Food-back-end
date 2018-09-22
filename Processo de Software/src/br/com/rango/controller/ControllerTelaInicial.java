@@ -38,21 +38,25 @@ public class ControllerTelaInicial {
 			switch (opcao) {
 			// logar usuario
 			case '1':
-				if (model.logar(dados.cpf(), dados.senha()) == false) {
-					notificacoes.notificacao("Usuario invalido!");
+				if (model.logarUsuario(dados.cpf(), dados.senha()) == false) {
+					notificacoes.notificacao("Usuário invalido !");
 				} else {
-					controleProprietario.telaProprietario();
+					notificacoes.notificacao("Bem vindo!");
+					//OBS:aqui vem a chamada para a tela do usuario
 				}
 				break;
 			// cadastra usuario
 			case '2':
-
+				if (model.cadastraUsuario(dados.nome(), dados.email(), dados.cpf(), dados.telefone()) == true) {
+					notificacoes.notificacao("Usuário cadastrado com sucesso!");
+					// OBS: aqui vem a chamada para a tela usuario
+				} else {
+					notificacoes.notificacao("Usuario ja castrado no sistema com essas informaçoes!");}
 				break;
 			// cadastra restaurante
 			case '3':
 				controlerestaurante.controleTelaLogin();
 			default:
-				notificacoes.notificacao("Opção invalida!");
 				break;
 			}
 		} while (opcao != '4');

@@ -8,6 +8,13 @@ public class Usuario {
 	private String contato;
 	private int Senha;
 
+	public Usuario(String nome, String email, String cpf, String contato) {
+	this.setNome(nome);
+	this.setEmail(email);
+	this.setCpf(cpf);
+	this.setContato(contato);
+	}
+
 	public String getEmail() {
 		return email;
 	}

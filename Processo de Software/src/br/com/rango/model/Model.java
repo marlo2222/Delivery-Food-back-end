@@ -3,21 +3,19 @@ package br.com.rango.model;
 import java.util.ArrayList;
 
 import br.com.rango.controller.ControllerTelaInicial;
-import br.com.rango.estruturasdados.restaurante.Hash;
-import br.com.rango.estruturasdados.restaurante.NoHash;
+import br.com.rango.estruturasdados.restaurante.*;
+import br.com.rango.estruturasdados.usuario.*;
 import br.com.rango.verificacoes.AutenticarDados;
-import br.com.rango.views.TelaPrincipalProprietario;
-import br.com.rango.views.ViewDadosRestaurante;
-import br.com.rango.views.ViewDadosCadastro;
-import br.com.rango.views.ViewNotificacoes;
+
 
 public class Model {
 	private AutenticarDados autenticacao = new AutenticarDados();
 	private Hash liProprietario = new Hash();
 	private ControllerTelaInicial controler;
-	private Proprietario usuario;
+	private Proprietario proprietario;
+	private Usuario usuario;
 	private Hash liRestaurantes = new Hash();
-	private Hash liUsuario = new Hash();
+	private HashU liUsuario = new HashU();
 
 	public Model(ControllerTelaInicial controler) {
 		liProprietario.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", 1234),
@@ -34,7 +32,7 @@ public class Model {
 		for (int indice = 0; indice < liProprietario.length(); indice++) {
 			if (liProprietario.hash[indice] != null) {
 				for (NoHash aux = liProprietario.hash[indice].inicio; aux != null; aux = aux.prox) {
-					ArrayList<Restaurantes> rest = aux.objeto.restaurante;
+					ArrayList<Restaurantes> rest = aux.proprietario.restaurante;
 					if (rest != null) {
 						for (int i = 0; i < rest.size(); i++) {
 							lista += (cont++) + "->" + rest.get(i).getNome() + "\n";
@@ -50,12 +48,7 @@ public class Model {
 	// cadastrando proprietarios
 	public boolean cadastraProprieatrio(String nome, String email, String cpf, String telefone) {
 
-		Proprietario proprietario = new Proprietario();
-
-		proprietario.setNome(nome);
-		proprietario.setEmail(email);
-		proprietario.setCpf(cpf);
-		proprietario.setContato(telefone);
+		Proprietario proprietario = new Proprietario(nome, email, cpf, telefone);
 
 		if (liProprietario.buscar(proprietario.getCpf(), proprietario.getNome()) == true) {
 			if (autenticacao.AutenticarDados(proprietario) == true) {
@@ -66,26 +59,36 @@ public class Model {
 		}
 		return false;
 	}
+	//cadastro usuario
+	public boolean cadastraUsuario(String nome, String email, String cpf, String telefone) {
+
+		Usuario usuario = new Usuario(nome, email, cpf, telefone);
+
+		if (liUsuario.buscar(usuario.getCpf(), usuario.getNome()) == true) {
+			if (autenticacao.AutenticarDados(usuario) == true) {
+				usuario.setSenha(controler.definirSenha());
+				liUsuario.adicionar(usuario, usuario.getCpf());
+				return true;
+			}
+		}
+		return false;
+	}
 
 	// adicionando restaurante
 	public boolean cadastroRestaurante(String nome, String horario, Endereco endereco, String contato) {
-		Restaurantes restaurante = new Restaurantes();
-		restaurante.setNome(nome);
-		restaurante.setHorarioFucionamento(horario);
-		restaurante.setLocalização(endereco);
-		restaurante.setTelefoneContato(contato);
-		// falta adicionar o restaurante na lista de restaurantes...
-		if (usuario.restaurante == null) {
-			usuario.restaurante = new ArrayList<Restaurantes>();
-			usuario.restaurante.add(0, restaurante);
+		Restaurantes restaurante = new Restaurantes(nome, horario, endereco, contato);
+	
+		if (proprietario.restaurante == null) {
+			proprietario.restaurante = new ArrayList<Restaurantes>();
+			proprietario.restaurante.add(0, restaurante);
 			return true;
 		}
-		if (usuario.restaurante.isEmpty() == true) {
-			usuario.restaurante.add(restaurante);
+		if (proprietario.restaurante.isEmpty() == true) {
+			proprietario.restaurante.add(restaurante);
 			return true;
 		}
-		if (restauranteInexistente(usuario.restaurante, restaurante) == false) {
-			usuario.restaurante.add(restaurante);
+		if (restauranteInexistente(proprietario.restaurante, restaurante) == false) {
+			proprietario.restaurante.add(restaurante);
 			return true;
 		}
 		return false;
@@ -103,23 +106,34 @@ public class Model {
 	}
 
 	// chamada para autenticação do usuario
-	public boolean logar(String cpf, int senha) {
+	public boolean logarProprietario(String cpf, int senha) {
 		Proprietario pro = liProprietario.buscarSenha(cpf, senha);
 		if (pro != null) {
-			usuario = pro;
+			proprietario = pro;
 			return true;
 		}
 		return false;
 	}
 
+	// chamada para autenticação do usuario
+	public boolean logarUsuario(String cpf, int senha) {
+		Usuario user = liUsuario.buscarSenha(cpf, senha);
+		if (user != null) {
+			usuario = user;
+			return true;
+		}
+		return false;
+	}
+
+
 	// retorna uma lista de restaurantes
 	public String visualizaRestaurantes() {
 		String lista = "";
-		if (usuario.restaurante == null || usuario.restaurante.isEmpty()) {
+		if (proprietario.restaurante == null || proprietario.restaurante.isEmpty()) {
 			return "Lista esta Vazia";
 		}
-		for (int i = 0; i < usuario.restaurante.size(); i++) {
-			lista += 1 + i + "-" + usuario.restaurante.get(i).getNome() + "\n";
+		for (int i = 0; i < proprietario.restaurante.size(); i++) {
+			lista += 1 + i + "-" + proprietario.restaurante.get(i).getNome() + "\n";
 		}
 		return lista;
 	}
@@ -137,10 +151,10 @@ public class Model {
 	}
 	
 	public boolean revomerRestaurante(int indice) {
-		if (usuario.restaurante != null) {
-			if (!usuario.restaurante.isEmpty()) {
-				if (controler.definirSenha() == usuario.getSenha() && indice <= usuario.restaurante.size()) {
-					usuario.restaurante.remove(indice - 1);
+		if (proprietario.restaurante != null) {
+			if (!proprietario.restaurante.isEmpty()) {
+				if (controler.definirSenha() == proprietario.getSenha() && indice <= proprietario.restaurante.size()) {
+					proprietario.restaurante.remove(indice - 1);
 					return true;
 
 				}
@@ -151,15 +165,15 @@ public class Model {
 
 	public void AtualizarRest(int posicao, String informacao) {
 		if(posicao == 1)
-			usuario.restaurante.get(posicao-1).setNome(informacao);
+			proprietario.restaurante.get(posicao-1).setNome(informacao);
 		if(posicao == 2)
-			usuario.restaurante.get(posicao-1).setHorarioFucionamento(informacao);
+			proprietario.restaurante.get(posicao-1).setHorarioFucionamento(informacao);
 		if(posicao == 4)
-			usuario.restaurante.get(posicao-1).setTelefoneContato(informacao);
+			proprietario.restaurante.get(posicao-1).setTelefoneContato(informacao);
 	}
 
 	public void AtualizarRest(int posicao,Endereco endereco) {
-		usuario.restaurante.get(posicao-1).setLocalização(endereco);
+		proprietario.restaurante.get(posicao-1).setLocalização(endereco);
 	}
 
 }
