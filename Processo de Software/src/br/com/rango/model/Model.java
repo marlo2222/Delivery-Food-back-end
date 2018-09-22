@@ -13,15 +13,16 @@ import br.com.rango.views.ViewNotificacoes;
 
 public class Model {
 	private AutenticarDados autenticacao = new AutenticarDados();
-	private Hash liUsuarios = new Hash();
+	private Hash liProprietario = new Hash();
 	private ControllerTelaInicial controler;
 	private Proprietario usuario;
 	private Hash liRestaurantes = new Hash();
+	private Hash liUsuario = new Hash();
 
 	public Model(ControllerTelaInicial controler) {
-		liUsuarios.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", 1234),
+		liProprietario.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", 1234),
 				"06314815320");
-		liUsuarios.adicionar(new Proprietario("maria", "maria@gmail.com", "09876543212", "92424095", 1234),
+		liProprietario.adicionar(new Proprietario("maria", "maria@gmail.com", "09876543212", "92424095", 1234),
 				"09876543212");
 		this.controler = controler;
 	}
@@ -30,9 +31,9 @@ public class Model {
 	public String listaRest() {
 		int cont = 1;
 		String lista = "";
-		for (int indice = 0; indice < liUsuarios.length(); indice++) {
-			if (liUsuarios.hash[indice] != null) {
-				for (NoHash aux = liUsuarios.hash[indice].inicio; aux != null; aux = aux.prox) {
+		for (int indice = 0; indice < liProprietario.length(); indice++) {
+			if (liProprietario.hash[indice] != null) {
+				for (NoHash aux = liProprietario.hash[indice].inicio; aux != null; aux = aux.prox) {
 					ArrayList<Restaurantes> rest = aux.proprietario.restaurante;
 					if (rest != null) {
 						for (int i = 0; i < rest.size(); i++) {
@@ -56,10 +57,10 @@ public class Model {
 		proprietario.setCpf(cpf);
 		proprietario.setContato(telefone);
 
-		if (liUsuarios.buscar(proprietario.getCpf(), proprietario.getNome()) == true) {
+		if (liProprietario.buscar(proprietario.getCpf(), proprietario.getNome()) == true) {
 			if (autenticacao.AutenticarDados(proprietario) == true) {
 				proprietario.setSenha(controler.definirSenha());
-				liUsuarios.adicionar(proprietario, proprietario.getCpf());
+				liProprietario.adicionar(proprietario, proprietario.getCpf());
 				return true;
 			}
 		}
@@ -103,7 +104,7 @@ public class Model {
 
 	// chamada para autenticação do usuario
 	public boolean logar(String cpf, int senha) {
-		Proprietario pro = liUsuarios.buscarSenha(cpf, senha);
+		Proprietario pro = liProprietario.buscarSenha(cpf, senha);
 		if (pro != null) {
 			usuario = pro;
 			return true;
