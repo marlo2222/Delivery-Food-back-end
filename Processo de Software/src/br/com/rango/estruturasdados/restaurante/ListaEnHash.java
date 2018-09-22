@@ -1,4 +1,4 @@
-package br.com.rango.estruturasdados;
+package br.com.rango.estruturasdados.restaurante;
 
 import br.com.rango.model.Proprietario;
 

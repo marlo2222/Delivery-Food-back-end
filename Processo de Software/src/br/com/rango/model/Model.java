@@ -3,8 +3,8 @@ package br.com.rango.model;
 import java.util.ArrayList;
 
 import br.com.rango.controller.ControllerTelaInicial;
-import br.com.rango.estruturasdados.Hash;
-import br.com.rango.estruturasdados.NoHash;
+import br.com.rango.estruturasdados.restaurante.Hash;
+import br.com.rango.estruturasdados.restaurante.NoHash;
 import br.com.rango.verificacoes.AutenticarDados;
 import br.com.rango.views.TelaPrincipalProprietario;
 import br.com.rango.views.ViewDadosRestaurante;
@@ -34,7 +34,7 @@ public class Model {
 		for (int indice = 0; indice < liProprietario.length(); indice++) {
 			if (liProprietario.hash[indice] != null) {
 				for (NoHash aux = liProprietario.hash[indice].inicio; aux != null; aux = aux.prox) {
-					ArrayList<Restaurantes> rest = aux.proprietario.restaurante;
+					ArrayList<Restaurantes> rest = aux.objeto.restaurante;
 					if (rest != null) {
 						for (int i = 0; i < rest.size(); i++) {
 							lista += (cont++) + "->" + rest.get(i).getNome() + "\n";

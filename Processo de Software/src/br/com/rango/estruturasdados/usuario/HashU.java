@@ -1,9 +1,9 @@
-package br.com.rango.estruturasdados.restaurante;
+package br.com.rango.estruturasdados.usuario;
 
-import br.com.rango.model.Proprietario;
+import br.com.rango.model.*;
 
-public class Hash {
-	public ListaEnHash[] hash = new ListaEnHash[11];
+public class HashU {
+	public ListaEnHashU[] hash = new ListaEnHashU[11];
 
 	private int h(int chave) {
 		int c = chave % 10000;
@@ -11,12 +11,12 @@ public class Hash {
 		return c;
 	}
 
-	public void adicionar(Proprietario proprietario, String chave) {
+	public void adicionar(Usuario usuario, String chave) {
 		int indice = h(dig(chave));
 
 		if (getHash()[indice] == null)
-			getHash()[indice] = new ListaEnHash();
-		getHash()[indice].adicionar(proprietario);
+			getHash()[indice] = new ListaEnHashU();
+		getHash()[indice].adicionar(usuario);
 
 	}
 	//nao esta sendo usado!!!!!!
@@ -34,20 +34,20 @@ public class Hash {
 	public boolean buscar(String cpf, String usuario) {
 		int indice = h(dig(cpf));
 		if (getHash()[indice] != null) {
-			for (NoHash aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {
-				if (aux.proprietario.getCpf() == cpf && aux.proprietario.getNome().equals(usuario))
+			for (NoHashU aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {
+				if (aux.usuario.getCpf() == cpf && aux.usuario.getNome().equals(usuario))
 					return false;
 			}
 		}
 		return true;
 	}
 	//busca no momento de autenticaçã
-	public Proprietario buscarSenha(String cpf, int chave) {
+	public Usuario buscarSenha(String cpf, int chave) {
 		int indice = h(dig(cpf));
 		if (getHash()[indice] != null) {
-			for (NoHash aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {
-				if (aux.proprietario.getSenha() == chave && aux.proprietario.getCpf().equals(cpf))
-					return aux.proprietario;
+			for (NoHashU aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {
+				if (aux.usuario.getSenha() == chave && aux.usuario.getCpf().equals(cpf))
+					return aux.usuario;
 			}
 		}
 		return null;
@@ -65,11 +65,11 @@ public class Hash {
 		return getHash().length;
 	}
 
-	public ListaEnHash[] getHash() {
+	public ListaEnHashU[] getHash() {
 		return hash;
 	}
 
-	public void setHash(ListaEnHash[] hash) {
+	public void setHash(ListaEnHashU[] hash) {
 		this.hash = hash;
 	}
 
