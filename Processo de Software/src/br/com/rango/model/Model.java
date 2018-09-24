@@ -140,7 +140,7 @@ public class Model {
 
 	//não estou conseguindo pensar em como validar sem ser pelo set essas strings, por isso ira retornar true por enquanto
 	//endereco alternativo
-	public boolean cadastroEnderecoAlternativo(String nomeDarua, String numCasa, String nomeDoBairro, String nomeMunicipio, String nomeEstado) {
+	public boolean cadastroEndereco(String nomeDarua, String numCasa, String nomeDoBairro, String nomeMunicipio, String nomeEstado) {
 		Endereco endAux = new Endereco();
 		endAux.setRua(nomeDarua);
 		endAux.setNumero(numCasa);

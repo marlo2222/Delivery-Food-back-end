@@ -2,7 +2,7 @@ package br.com.rango.views;
 
 import java.util.Scanner;
 
-public class ViewEnderecoAlternativo {
+public class ViewEndereco {
 	Scanner input = new Scanner(System.in);
 
 	public void mgsEnderecoDeEntregaErro() {

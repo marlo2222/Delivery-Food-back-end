@@ -5,13 +5,13 @@ import java.util.Scanner;
 import br.com.rango.controller.ControllerTelaInicial;
 import br.com.rango.model.Model;
 
-public class EnderecoAlternativo {
+public class TelaEndereco {
 	
 	public Model model;
 	public ControllerTelaInicial controler;
 	Scanner input = new Scanner(System.in);
 	
-	public EnderecoAlternativo(Model model) {
+	public TelaEndereco(Model model) {
 		this.model = model;
 		this.controler = new ControllerTelaInicial(model,this);
 		iniciar();

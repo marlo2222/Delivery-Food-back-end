@@ -8,10 +8,11 @@ public class ControllerTelaInicial {
 	public TelaInicial preTela;
 	public ViewNotificacoes notificacoes = new ViewNotificacoes();
 	public ViewDadosCadastro dados = new ViewDadosCadastro();
-	public EnderecoAlternativo preTelaEnderecoAlternativo;
-	public ViewEnderecoAlternativo endAlternativo = new ViewEnderecoAlternativo();
+	public TelaEndereco preTelaEndereco;
+	public ViewEndereco endereco = new ViewEndereco();
 	public ControllerInicialRestaurante controlerestaurante;
 	public ControllerProprietario controleProprietario;
+	public ViewEndereco dadosEnd = new ViewEndereco();
 
 	public ControllerTelaInicial() {
 		super();
@@ -25,9 +26,9 @@ public class ControllerTelaInicial {
 
 	}
 
-	public ControllerTelaInicial(Model model, EnderecoAlternativo preTelaEnderecoAlternativo) {
+	public ControllerTelaInicial(Model model, TelaEndereco preTelaEnderecoAlternativo) {
 		this.model = model;
-		this.preTelaEnderecoAlternativo = preTelaEnderecoAlternativo;
+		this.preTelaEndereco = preTelaEnderecoAlternativo;
 	}
 
 	// controler inicial, primeiro menu
@@ -47,7 +48,7 @@ public class ControllerTelaInicial {
 				break;
 			// cadastra usuario
 			case '2':
-				if (model.cadastraUsuario(dados.nome(), dados.email(), dados.cpf(), dados.telefone()) == true) {
+				if ((model.cadastraUsuario(dados.nome(), dados.email(), dados.cpf(), dados.telefone()) == true) && (model.cadastroEndereco(dadosEnd.nomeDarua(), dadosEnd.NumCasa(), dadosEnd.nomeDoBairro(), dadosEnd.nomeMunicipio(), dadosEnd.nomeEstado()) == true)) {
 					notificacoes.notificacao("Usuário cadastrado com sucesso!");
 					// OBS: aqui vem a chamada para a tela usuario
 				} else {
@@ -65,16 +66,16 @@ public class ControllerTelaInicial {
 	public void acaoTelaEnderecoAlternativo() {
 		char opcao;
 		do {
-			opcao = preTelaEnderecoAlternativo.TelaDeEntrega();
+			opcao = preTelaEndereco.TelaDeEntrega();
 			switch (opcao) {
 			case '1':
 				// usar endereco cadastrado
 				break;
 			case '2':
-				if (model.cadastroEnderecoAlternativo(endAlternativo.nomeDarua(), endAlternativo.NumCasa(),
-						endAlternativo.nomeDoBairro(), endAlternativo.nomeMunicipio(),
-						endAlternativo.nomeEstado()) == false) {
-					endAlternativo.mgsEnderecoDeEntregaErro();
+				if (model.cadastroEndereco(endereco.nomeDarua(), endereco.NumCasa(),
+						endereco.nomeDoBairro(), endereco.nomeMunicipio(),
+						endereco.nomeEstado()) == false) {
+					endereco.mgsEnderecoDeEntregaErro();
 				}
 				break;
 			case '3':
@@ -84,7 +85,7 @@ public class ControllerTelaInicial {
 			}
 		} while (opcao != '4');
 	}
-
+	
 	public int definirSenha() {
 		return dados.senha();
 	}
