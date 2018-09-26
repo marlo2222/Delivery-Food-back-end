@@ -9,8 +9,11 @@ public class ViewNotificacoes {
 	public void ListaRestaurantes(String lista) {
 		System.out.println(lista);
 	}
-	public void msgRemoverRestaurante(String msg) {
-		System.out.println(msg);
+	public int notificacaoRet() {
+		System.out.println("Deseja cadastra seu endereco padrão agora?");
+		System.out.println("1-> Sim");
+		System.out.println("2-> Não");
+		return inputInt.nextInt();
 	}
 	public int Lista(String lista) {
 		System.out.println("Escolha o restaurante que deseja excluir:");

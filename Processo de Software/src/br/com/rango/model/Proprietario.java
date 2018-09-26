@@ -7,14 +7,14 @@ public class Proprietario {
 	private String email;
 	private String cpf;
 	private String contato;
-	private int Senha;
+	private String Senha;
 	public ArrayList<Restaurantes> restaurante;
 
 	public Proprietario() {
 		super();
 	}
 
-	public Proprietario(String nome, String email, String cpf, String contato, int senha) {
+	public Proprietario(String nome, String email, String cpf, String contato, String senha) {
 		setNome(nome);
 		setEmail(email);
 		setCpf(cpf);
@@ -67,11 +67,11 @@ public class Proprietario {
 		this.contato = contato;
 	}
 
-	public int getSenha() {
+	public String getSenha() {
 		return Senha;
 	}
 
-	public void setSenha(int senha) {
+	public void setSenha(String senha) {
 		Senha = senha;
 	}
 

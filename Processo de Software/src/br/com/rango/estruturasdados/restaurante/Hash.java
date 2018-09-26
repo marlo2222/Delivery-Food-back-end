@@ -42,7 +42,7 @@ public class Hash {
 		return true;
 	}
 	//busca no momento de autenticaçã
-	public Proprietario buscarSenha(String cpf, int chave) {
+	public Proprietario buscarSenha(String cpf, String chave) {
 		int indice = h(dig(cpf));
 		if (getHash()[indice] != null) {
 			for (NoHash aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {

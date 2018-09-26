@@ -13,6 +13,7 @@ public class ControllerTelaInicial {
 	public ControllerInicialRestaurante controlerestaurante;
 	public ControllerProprietario controleProprietario;
 	public ViewEndereco dadosEnd = new ViewEndereco();
+	public ControllerUsuario controleUsuario;
 
 	public ControllerTelaInicial() {
 		super();
@@ -23,6 +24,7 @@ public class ControllerTelaInicial {
 		this.preTela = preTela;
 		this.controlerestaurante = new ControllerInicialRestaurante(model, controleProprietario);
 		this.controleProprietario = new ControllerProprietario(model);
+		this.controleUsuario = new ControllerUsuario(model);
 
 	}
 
@@ -43,14 +45,18 @@ public class ControllerTelaInicial {
 					notificacoes.notificacao("Usuário invalido !");
 				} else {
 					notificacoes.notificacao("Bem vindo!");
-					//OBS:aqui vem a chamada para a tela do usuario
+					controleUsuario.menuUsuario();
 				}
 				break;
 			// cadastra usuario
 			case '2':
-				if ((model.cadastraUsuario(dados.nome(), dados.email(), dados.cpf(), dados.telefone()) == true) && (model.cadastroEndereco(dadosEnd.nomeDarua(), dadosEnd.NumCasa(), dadosEnd.nomeDoBairro(), dadosEnd.nomeMunicipio(), dadosEnd.nomeEstado()) == true)) {
+				if ((model.cadastraUsuario(dados.nome(), dados.email(), dados.cpf(), dados.telefone()) == true)) {
 					notificacoes.notificacao("Usuário cadastrado com sucesso!");
-					// OBS: aqui vem a chamada para a tela usuario
+					if(notificacoes.notificacaoRet() == 1) {
+						model.DefinirEnderecoPadrao(dados.endereco());
+						notificacoes.notificacao("Endereco Definido");
+					}
+					controleUsuario.menuUsuario();
 				} else {
 					notificacoes.notificacao("Usuario ja castrado no sistema com essas informaçoes!");}
 				break;
@@ -86,7 +92,7 @@ public class ControllerTelaInicial {
 		} while (opcao != '4');
 	}
 	
-	public int definirSenha() {
+	public String definirSenha() {
 		return dados.senha();
 	}
 

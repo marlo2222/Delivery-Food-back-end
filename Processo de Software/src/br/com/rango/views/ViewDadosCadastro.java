@@ -2,6 +2,7 @@ package br.com.rango.views;
 
 import java.util.Scanner;
 
+import br.com.rango.model.Endereco;
 import br.com.rango.model.Proprietario;
 
 public class ViewDadosCadastro {
@@ -32,9 +33,26 @@ public class ViewDadosCadastro {
 		System.out.println("informe seu Rg:");
 		return input.nextLine();
 	}
-	public int senha() {
+
+	public String senha() {
 		System.out.println("Defina sua senha:");
-		return inputInt.nextInt();
+		return input.nextLine();
 	}
-	
+
+	public Endereco endereco() {
+		Endereco dados = new Endereco();
+		System.out.println("Digite o nome da rua:");
+		dados.setRua(input.nextLine());
+		System.out.println("Digite o bairro");
+		dados.setBairro(input.nextLine());
+		System.out.println("Digite o numero do endereço");
+		dados.setNumero(input.nextLine());
+		System.out.println("digite seu estado:");
+		dados.setEstado(input.nextLine());
+		System.out.println("digie o municipio:");
+		dados.setMunicipio(input.nextLine());
+
+		return dados;
+	}
+
 }

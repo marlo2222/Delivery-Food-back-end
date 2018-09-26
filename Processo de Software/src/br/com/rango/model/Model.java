@@ -7,7 +7,6 @@ import br.com.rango.estruturasdados.restaurante.*;
 import br.com.rango.estruturasdados.usuario.*;
 import br.com.rango.verificacoes.AutenticarDados;
 
-
 public class Model {
 	private AutenticarDados autenticacao = new AutenticarDados();
 	private Hash liProprietario = new Hash();
@@ -18,9 +17,9 @@ public class Model {
 	private HashU liUsuario = new HashU();
 
 	public Model(ControllerTelaInicial controler) {
-		liProprietario.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", 1234),
+		liProprietario.adicionar(new Proprietario("marlo", "marlo@gmail.com", "06314815320", "92424095", "1234"),
 				"06314815320");
-		liProprietario.adicionar(new Proprietario("maria", "maria@gmail.com", "09876543212", "92424095", 1234),
+		liProprietario.adicionar(new Proprietario("maria", "maria@gmail.com", "09876543212", "92424095", "1234"),
 				"09876543212");
 		this.controler = controler;
 	}
@@ -59,7 +58,8 @@ public class Model {
 		}
 		return false;
 	}
-	//cadastro usuario
+
+	// cadastro usuario
 	public boolean cadastraUsuario(String nome, String email, String cpf, String telefone) {
 
 		Usuario usuario = new Usuario(nome, email, cpf, telefone);
@@ -77,7 +77,7 @@ public class Model {
 	// adicionando restaurante
 	public boolean cadastroRestaurante(String nome, String horario, Endereco endereco, String contato) {
 		Restaurantes restaurante = new Restaurantes(nome, horario, endereco, contato);
-	
+
 		if (proprietario.restaurante == null) {
 			proprietario.restaurante = new ArrayList<Restaurantes>();
 			proprietario.restaurante.add(0, restaurante);
@@ -106,7 +106,7 @@ public class Model {
 	}
 
 	// chamada para autenticação do usuario
-	public boolean logarProprietario(String cpf, int senha) {
+	public boolean logarProprietario(String cpf, String senha) {
 		Proprietario pro = liProprietario.buscarSenha(cpf, senha);
 		if (pro != null) {
 			proprietario = pro;
@@ -116,7 +116,7 @@ public class Model {
 	}
 
 	// chamada para autenticação do usuario
-	public boolean logarUsuario(String cpf, int senha) {
+	public boolean logarUsuario(String cpf, String senha) {
 		Usuario user = liUsuario.buscarSenha(cpf, senha);
 		if (user != null) {
 			usuario = user;
@@ -124,7 +124,6 @@ public class Model {
 		}
 		return false;
 	}
-
 
 	// retorna uma lista de restaurantes
 	public String visualizaRestaurantes() {
@@ -137,10 +136,15 @@ public class Model {
 		}
 		return lista;
 	}
+	public void DefinirEnderecoPadrao(Endereco endereco) {
+	usuario.setEnderecoPadrao(endereco);	
+	}
 
-	//não estou conseguindo pensar em como validar sem ser pelo set essas strings, por isso ira retornar true por enquanto
-	//endereco alternativo
-	public boolean cadastroEndereco(String nomeDarua, String numCasa, String nomeDoBairro, String nomeMunicipio, String nomeEstado) {
+	// não estou conseguindo pensar em como validar sem ser pelo set essas strings,
+	// por isso ira retornar true por enquanto
+	// endereco alternativo
+	public boolean cadastroEndereco(String nomeDarua, String numCasa, String nomeDoBairro, String nomeMunicipio,
+			String nomeEstado) {
 		Endereco endAux = new Endereco();
 		endAux.setRua(nomeDarua);
 		endAux.setNumero(numCasa);
@@ -149,7 +153,7 @@ public class Model {
 		endAux.setEstado(nomeEstado);
 		return true;
 	}
-	
+
 	public boolean revomerRestaurante(int indice) {
 		if (proprietario.restaurante != null) {
 			if (!proprietario.restaurante.isEmpty()) {
@@ -163,17 +167,29 @@ public class Model {
 		return false;
 	}
 
-	public void AtualizarRest(int posicao, String informacao) {
-		if(posicao == 1)
-			proprietario.restaurante.get(posicao-1).setNome(informacao);
-		if(posicao == 2)
-			proprietario.restaurante.get(posicao-1).setHorarioFucionamento(informacao);
-		if(posicao == 4)
-			proprietario.restaurante.get(posicao-1).setTelefoneContato(informacao);
+	public void AtualizarUsuario(int campo, String informacao) {
+		if(campo == 1)
+			usuario.setEmail(informacao);
+		if(campo == 2)
+			usuario.setContato(informacao);
+		if(campo == 3)
+			usuario.setSenha(informacao);
+		if(campo == 4) {
+			
+		}
 	}
 
-	public void AtualizarRest(int posicao,Endereco endereco) {
-		proprietario.restaurante.get(posicao-1).setLocalização(endereco);
+	public void AtualizarRest(int posicao, String informacao) {
+		if (posicao == 1)
+			proprietario.restaurante.get(posicao - 1).setNome(informacao);
+		if (posicao == 2)
+			proprietario.restaurante.get(posicao - 1).setHorarioFucionamento(informacao);
+		if (posicao == 4)
+			proprietario.restaurante.get(posicao - 1).setTelefoneContato(informacao);
+	}
+
+	public void AtualizarRest(int posicao, Endereco endereco) {
+		proprietario.restaurante.get(posicao - 1).setLocalização(endereco);
 	}
 
 }
