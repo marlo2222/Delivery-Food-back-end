@@ -12,11 +12,19 @@ public class Usuario {
 	private Endereco enderecoPadrao;
 	private ArrayList<Endereco> listaEnderecos; 
 
-	public Usuario(String nome, String email, String cpf, String contato) {
+	public Usuario(String nome, String email, String cpf, String contato, String senha) {
 	this.setNome(nome);
 	this.setEmail(email);
 	this.setCpf(cpf);
 	this.setContato(contato);
+	this.setSenha(senha);
+	}
+
+	public Usuario(String nome, String email, String cpf, String telefone) {
+		this.setNome(nome);
+		this.setEmail(email);
+		this.setCpf(cpf);
+		this.setContato(telefone);
 	}
 
 	public String getEmail() {

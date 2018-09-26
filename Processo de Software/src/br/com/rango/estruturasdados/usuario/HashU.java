@@ -19,23 +19,13 @@ public class HashU {
 		getHash()[indice].adicionar(usuario);
 
 	}
-	//nao esta sendo usado!!!!!!
-	/*public Proprietario buscarSenha(String cpf, int chave, String usuario) {
-		int indice = h(dig(cpf));
-		if (getHash()[indice] != null) {
-			for (NoHash aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {
-				if (aux.proprietario.getSenha() == chave && aux.proprietario.getNome().equals(usuario))
-					return aux.proprietario;
-			}
-		}
-		return null;
-	}*/
+	
 	//busca no momento do cadastro para saber se aquele usuario ja existe
 	public boolean buscar(String cpf, String usuario) {
 		int indice = h(dig(cpf));
 		if (getHash()[indice] != null) {
 			for (NoHashU aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {
-				if (aux.usuario.getCpf() == cpf && aux.usuario.getNome().equals(usuario))
+				if (aux.usuario.getCpf().equals(cpf) && aux.usuario.getNome().equals(usuario))
 					return false;
 			}
 		}
@@ -46,7 +36,7 @@ public class HashU {
 		int indice = h(dig(cpf));
 		if (getHash()[indice] != null) {
 			for (NoHashU aux = getHash()[indice].inicio; aux != null; aux = aux.prox) {
-				if (aux.usuario.getSenha() == chave && aux.usuario.getCpf().equals(cpf))
+				if (aux.usuario.getSenha().equals(chave) && aux.usuario.getCpf().equals(cpf))
 					return aux.usuario;
 			}
 		}

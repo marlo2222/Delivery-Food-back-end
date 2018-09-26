@@ -21,6 +21,7 @@ public class Model {
 				"06314815320");
 		liProprietario.adicionar(new Proprietario("maria", "maria@gmail.com", "09876543212", "92424095", "1234"),
 				"09876543212");
+		liUsuario.adicionar(new Usuario("marlo", "marlo@gmail.com","09876543212","92424095","1234"), "09876543212");
 		this.controler = controler;
 	}
 
@@ -62,12 +63,13 @@ public class Model {
 	// cadastro usuario
 	public boolean cadastraUsuario(String nome, String email, String cpf, String telefone) {
 
-		Usuario usuario = new Usuario(nome, email, cpf, telefone);
+		Usuario novoUsuario = new Usuario(nome, email, cpf, telefone);
 
-		if (liUsuario.buscar(usuario.getCpf(), usuario.getNome()) == true) {
-			if (autenticacao.AutenticarDados(usuario) == true) {
-				usuario.setSenha(controler.definirSenha());
-				liUsuario.adicionar(usuario, usuario.getCpf());
+		if (liUsuario.buscar(novoUsuario.getCpf(), novoUsuario.getNome()) == true) {
+			if (autenticacao.AutenticarDados(novoUsuario) == true) {
+				novoUsuario.setSenha(controler.definirSenha());
+				liUsuario.adicionar(novoUsuario, novoUsuario.getCpf());
+				this.usuario = novoUsuario;
 				return true;
 			}
 		}
