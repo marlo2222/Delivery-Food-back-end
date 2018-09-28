@@ -33,12 +33,12 @@ public class ViewDadosCadastro {
 		System.out.println("informe seu Rg:");
 		return input.nextLine();
 	}
-
+	//retorna uma senha
 	public String senha() {
 		System.out.println("Defina sua senha:");
 		return input.nextLine();
 	}
-
+	//retorna um endereco
 	public Endereco endereco() {
 		Endereco dados = new Endereco();
 		System.out.println("Digite o nome da rua:");
@@ -49,7 +49,7 @@ public class ViewDadosCadastro {
 		dados.setNumero(input.nextLine());
 		System.out.println("digite seu estado:");
 		dados.setEstado(input.nextLine());
-		System.out.println("digie o municipio:");
+		System.out.println("digite o municipio:");
 		dados.setMunicipio(input.nextLine());
 
 		return dados;

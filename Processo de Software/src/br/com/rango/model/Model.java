@@ -21,7 +21,7 @@ public class Model {
 				"06314815320");
 		liProprietario.adicionar(new Proprietario("maria", "maria@gmail.com", "09876543212", "92424095", "1234"),
 				"09876543212");
-		liUsuario.adicionar(new Usuario("marlo", "marlo@gmail.com","09876543212","92424095","1234"), "09876543212");
+		liUsuario.adicionar(new Usuario("marlo", "marlo@gmail.com", "09876543212", "92424095", "1234"), "09876543212");
 		this.controler = controler;
 	}
 
@@ -138,10 +138,55 @@ public class Model {
 		}
 		return lista;
 	}
+
 	public void DefinirEnderecoPadrao(Endereco endereco) {
-	usuario.setEnderecoPadrao(endereco);	
+		usuario.setEnderecoPadrao(endereco);
 	}
 
+	public String ListaEnderecosUsuario() {
+		int cont = 1;
+		String lista = "";
+		if (usuario.getListaEnderecos() != null && usuario.getListaEnderecos().size() != 0) {
+			for (int i = 0; i < usuario.getListaEnderecos().size(); i++) {
+				lista += (cont++) + "->" + usuario.getListaEnderecos().get(i).getRua()
+						+ usuario.getListaEnderecos().get(i).getBairro()
+						+ usuario.getListaEnderecos().get(i).getNumero() + "\n";
+			}
+		}
+		return lista;
+	}
+
+	public void modificarEnderecoPadrao(int posicao) {
+		DefinirEnderecoPadrao(usuario.getListaEnderecos().get(posicao - 1));
+	}
+
+	public boolean adicionarEndereco(Endereco endereco) {
+		if (usuario.getListaEnderecos() == null) {
+			usuario.setListaEnderecos(new ArrayList<Endereco>());
+			usuario.getListaEnderecos().add(endereco);
+			return true;
+		}
+		if (usuario.getListaEnderecos().isEmpty() == true) {
+			usuario.getListaEnderecos().add(endereco);
+			return true;
+		}
+		if (enderecoInexistente(usuario.getListaEnderecos(), endereco) == false) {
+			usuario.getListaEnderecos().add(endereco);
+			return true;
+		}
+		return false;
+	}
+
+	public boolean enderecoInexistente(ArrayList<Endereco> lista, Endereco endereco) {
+		for (int i = 0; i < lista.size() - 1; i++) {
+			if (lista.get(i).getBairro().equals(endereco.getBairro()) && lista.get(i).getRua().equals(endereco.getRua())
+					&& lista.get(i).getNumero().equals(endereco.getNumero())) {
+				return true;
+			}
+		}
+		return false;
+	}
+/*
 	// não estou conseguindo pensar em como validar sem ser pelo set essas strings,
 	// por isso ira retornar true por enquanto
 	// endereco alternativo
@@ -154,7 +199,7 @@ public class Model {
 		endAux.setMunicipio(nomeMunicipio);
 		endAux.setEstado(nomeEstado);
 		return true;
-	}
+	}*/
 
 	public boolean revomerRestaurante(int indice) {
 		if (proprietario.restaurante != null) {
@@ -170,14 +215,14 @@ public class Model {
 	}
 
 	public void AtualizarUsuario(int campo, String informacao) {
-		if(campo == 1)
+		if (campo == 1)
 			usuario.setEmail(informacao);
-		if(campo == 2)
+		if (campo == 2)
 			usuario.setContato(informacao);
-		if(campo == 3)
+		if (campo == 3)
 			usuario.setSenha(informacao);
-		if(campo == 4) {
-			
+		if (campo == 4) {
+
 		}
 	}
 
