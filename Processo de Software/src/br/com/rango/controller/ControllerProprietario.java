@@ -11,10 +11,12 @@ public class ControllerProprietario {
 	public ViewNotificacoes notificacoes = new ViewNotificacoes();
 	public ViewDadosRestaurante dRestaurante = new ViewDadosRestaurante();
 	public ControllerEdicaoRestaurante edicaoRestaurante;
+	public ControllerAdmRestaurante admRestaurante;
 
 	public ControllerProprietario(Model model) {
 		this.model = model;
 		this.edicaoRestaurante = new ControllerEdicaoRestaurante(model);
+		this.admRestaurante = new ControllerAdmRestaurante(model);
 	}
 
 	public void telaProprietario() {
@@ -22,9 +24,13 @@ public class ControllerProprietario {
 		do {
 			opcao = menuPro.menuPropri();
 			switch (opcao) {
-			// visualizar restaurantes
+			//entra em restaurante x
 			case '1':
-				notificacoes.notificacao(model.visualizaRestaurantes());
+				if(model.definirRestaurantePadrao(notificacoes.ListaRestaurantes(model.visualizaRestaurantes()))==true) {
+					admRestaurante.AdmRestaurante();
+				}else {
+					notificacoes.notificacao("Lista de restaurantes vazia!");
+				}
 				break;
 			// cadastro restaurante
 			case '2':

@@ -8,6 +8,7 @@ public class Proprietario {
 	private String cpf;
 	private String contato;
 	private String Senha;
+	private Restaurantes restaurantePadrao;
 	public ArrayList<Restaurantes> restaurante;
 
 	public Proprietario() {
@@ -20,7 +21,7 @@ public class Proprietario {
 		setCpf(cpf);
 		setContato(contato);
 		setSenha(senha);
-
+		setRestaurantePadrao(new Restaurantes());
 	}
 
 	public Proprietario(String nome, String email, String cpf, String telefone) {
@@ -28,6 +29,7 @@ public class Proprietario {
 		setEmail(email);
 		setCpf(cpf);
 		setContato(telefone);
+		setRestaurantePadrao(new Restaurantes());
 	}
 
 	public ArrayList<Restaurantes> getRestaurante() {
@@ -81,5 +83,13 @@ public class Proprietario {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Restaurantes getRestaurantePadrao() {
+		return restaurantePadrao;
+	}
+
+	public void setRestaurantePadrao(Restaurantes restaurantePadrao) {
+		this.restaurantePadrao = restaurantePadrao;
 	}
 }

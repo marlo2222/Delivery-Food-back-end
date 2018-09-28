@@ -69,7 +69,7 @@ public class ControllerTelaInicial {
 		} while (opcao != '4');
 	}
 
-	public void acaoTelaEnderecoAlternativo() {
+/*	public void acaoTelaEnderecoAlternativo() {
 		char opcao;
 		do {
 			opcao = preTelaEndereco.TelaDeEntrega();
@@ -90,7 +90,7 @@ public class ControllerTelaInicial {
 				break;
 			}
 		} while (opcao != '4');
-	}
+	}*/
 	
 	public String definirSenha() {
 		return dados.senha();

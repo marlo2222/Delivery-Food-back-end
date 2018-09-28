@@ -170,7 +170,7 @@ public class Model {
 			usuario.getListaEnderecos().add(endereco);
 			return true;
 		}
-		if (enderecoInexistente(usuario.getListaEnderecos(), endereco) == false) {
+		if (!usuario.getListaEnderecos().contains(endereco)) {
 			usuario.getListaEnderecos().add(endereco);
 			return true;
 		}
@@ -186,20 +186,15 @@ public class Model {
 		}
 		return false;
 	}
-/*
-	// não estou conseguindo pensar em como validar sem ser pelo set essas strings,
-	// por isso ira retornar true por enquanto
-	// endereco alternativo
-	public boolean cadastroEndereco(String nomeDarua, String numCasa, String nomeDoBairro, String nomeMunicipio,
-			String nomeEstado) {
-		Endereco endAux = new Endereco();
-		endAux.setRua(nomeDarua);
-		endAux.setNumero(numCasa);
-		endAux.setBairro(nomeDoBairro);
-		endAux.setMunicipio(nomeMunicipio);
-		endAux.setEstado(nomeEstado);
-		return true;
-	}*/
+	/*
+	 * // não estou conseguindo pensar em como validar sem ser pelo set essas
+	 * strings, // por isso ira retornar true por enquanto // endereco alternativo
+	 * public boolean cadastroEndereco(String nomeDarua, String numCasa, String
+	 * nomeDoBairro, String nomeMunicipio, String nomeEstado) { Endereco endAux =
+	 * new Endereco(); endAux.setRua(nomeDarua); endAux.setNumero(numCasa);
+	 * endAux.setBairro(nomeDoBairro); endAux.setMunicipio(nomeMunicipio);
+	 * endAux.setEstado(nomeEstado); return true; }
+	 */
 
 	public boolean revomerRestaurante(int indice) {
 		if (proprietario.restaurante != null) {
@@ -239,4 +234,24 @@ public class Model {
 		proprietario.restaurante.get(posicao - 1).setLocalização(endereco);
 	}
 
+	public boolean definirRestaurantePadrao(int restaurante) {
+		if (proprietario.restaurante != null && proprietario.restaurante.size() > 0) {
+			proprietario.setRestaurantePadrao(proprietario.getRestaurante().get(restaurante));
+			return true;
+		}
+		return false;
+	}
+
+	public boolean CadastraPrato(Prato prato) {
+		if(proprietario.getRestaurantePadrao().getCardapio().getPrato().size() == 0) {
+			proprietario.getRestaurantePadrao().getCardapio().getPrato().add(prato);
+			return true;
+		}
+		if(!proprietario.getRestaurantePadrao().getCardapio().getPrato().contains(prato)) {
+			proprietario.getRestaurantePadrao().getCardapio().getPrato().add(prato);
+			return true;
+		}
+		return false;
+	}
+	
 }

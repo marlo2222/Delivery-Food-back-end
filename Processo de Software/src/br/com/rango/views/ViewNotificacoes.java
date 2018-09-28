@@ -6,8 +6,9 @@ public class ViewNotificacoes {
 	Scanner input = new Scanner(System.in);
 	Scanner inputInt = new Scanner(System.in);
 
-	public void ListaRestaurantes(String lista) {
+	public int ListaRestaurantes(String lista) {
 		System.out.println(lista);
+		return inputInt.nextInt();
 	}
 	public int notificacaoRet() {
 		System.out.println("Deseja cadastra seu endereco padrão agora?");
