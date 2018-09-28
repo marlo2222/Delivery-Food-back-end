@@ -7,7 +7,7 @@ public class Restaurantes {
 	private String horarioFucionamento;
 	private Endereco localização;
 	private String telefoneContato;
-	private ArrayList<Cardapio> cardapio;
+	private Cardapio cardapio;
 
 	public Restaurantes() {
 		super();
@@ -56,14 +56,13 @@ public class Restaurantes {
 			this.telefoneContato = telefoneContato;
 	}
 
-	public ArrayList<Cardapio> getCardapio() {
+	public Cardapio getCardapio() {
 		return cardapio;
 	}
 
-	public void setCardapio(ArrayList<Cardapio> cardapio) {
+	public void setCardapio(Cardapio cardapio) {
 		this.cardapio = cardapio;
 	}
 
-	// so pra ser besta
 
 }
