@@ -25,26 +25,6 @@ public class Model {
 		this.controler = controler;
 	}
 
-	// retornando um lista de restaurantes para o usuario
-	public String listaRest() {
-		int cont = 1;
-		String lista = "";
-		for (int indice = 0; indice < liProprietario.length(); indice++) {
-			if (liProprietario.hash[indice] != null) {
-				for (NoHash aux = liProprietario.hash[indice].inicio; aux != null; aux = aux.prox) {
-					ArrayList<Restaurantes> rest = aux.proprietario.restaurante;
-					if (rest != null) {
-						for (int i = 0; i < rest.size(); i++) {
-							lista += (cont++) + "->" + rest.get(i).getNome() + "\n";
-						}
-					}
-				}
-
-			}
-		}
-		return lista;
-	}
-
 	// cadastrando proprietarios
 	public boolean cadastraProprieatrio(String nome, String email, String cpf, String telefone) {
 
@@ -96,6 +76,26 @@ public class Model {
 		return false;
 	}
 
+	// retornando um lista de restaurantes para o usuario
+	public String listaRest() {
+		int cont = 1;
+		String lista = "";
+		for (int indice = 0; indice < liProprietario.length(); indice++) {
+			if (liProprietario.hash[indice] != null) {
+				for (NoHash aux = liProprietario.hash[indice].inicio; aux != null; aux = aux.prox) {
+					ArrayList<Restaurantes> rest = aux.proprietario.restaurante;
+					if (rest != null) {
+						for (int i = 0; i < rest.size(); i++) {
+							lista += (cont++) + "->" + rest.get(i).getNome() + "\n";
+						}
+					}
+				}
+
+			}
+		}
+		return lista;
+	}
+
 	// verificando existencia do restaurante
 	private boolean restauranteInexistente(ArrayList<Restaurantes> restaurante, Restaurantes rest) {
 		for (int i = 0; i < restaurante.size(); i++) {
@@ -105,6 +105,52 @@ public class Model {
 			return false;
 		}
 		return true;
+	}
+
+	// retorna uma lista de restaurantes
+	public String visualizaRestaurantes() {
+		String lista = "";
+		if (proprietario.restaurante == null || proprietario.restaurante.isEmpty()) {
+			return "Lista esta Vazia";
+		}
+		for (int i = 0; i < proprietario.restaurante.size(); i++) {
+			lista += 1 + i + "-" + proprietario.restaurante.get(i).getNome() + "\n";
+		}
+		return lista;
+	}
+
+	public void AtualizarRest(int posicao, String informacao) {
+		if (posicao == 1)
+			proprietario.restaurante.get(posicao - 1).setNome(informacao);
+		if (posicao == 2)
+			proprietario.restaurante.get(posicao - 1).setHorarioFucionamento(informacao);
+		if (posicao == 4)
+			proprietario.restaurante.get(posicao - 1).setTelefoneContato(informacao);
+	}
+
+	public void AtualizarRest(int posicao, Endereco endereco) {
+		proprietario.restaurante.get(posicao - 1).setLocalização(endereco);
+	}
+
+	public boolean definirRestaurantePadrao(int restaurante) {
+		if (proprietario.restaurante != null && proprietario.restaurante.size() > 0) {
+			proprietario.setRestaurantePadrao(proprietario.getRestaurante().get(restaurante - 1));
+			return true;
+		}
+		return false;
+	}
+
+	public boolean revomerRestaurante(int indice) {
+		if (proprietario.restaurante != null) {
+			if (!proprietario.restaurante.isEmpty()) {
+				if (controler.definirSenha() == proprietario.getSenha() && indice <= proprietario.restaurante.size()) {
+					proprietario.restaurante.remove(indice - 1);
+					return true;
+
+				}
+			}
+		}
+		return false;
 	}
 
 	// chamada para autenticação do usuario
@@ -125,18 +171,6 @@ public class Model {
 			return true;
 		}
 		return false;
-	}
-
-	// retorna uma lista de restaurantes
-	public String visualizaRestaurantes() {
-		String lista = "";
-		if (proprietario.restaurante == null || proprietario.restaurante.isEmpty()) {
-			return "Lista esta Vazia";
-		}
-		for (int i = 0; i < proprietario.restaurante.size(); i++) {
-			lista += 1 + i + "-" + proprietario.restaurante.get(i).getNome() + "\n";
-		}
-		return lista;
 	}
 
 	public void DefinirEnderecoPadrao(Endereco endereco) {
@@ -161,6 +195,7 @@ public class Model {
 	}
 
 	public boolean adicionarEndereco(Endereco endereco) {
+
 		if (usuario.getListaEnderecos() == null) {
 			usuario.setListaEnderecos(new ArrayList<Endereco>());
 			usuario.getListaEnderecos().add(endereco);
@@ -170,7 +205,7 @@ public class Model {
 			usuario.getListaEnderecos().add(endereco);
 			return true;
 		}
-		if (!usuario.getListaEnderecos().contains(endereco)) {
+		if (enderecoInexistente(usuario.getListaEnderecos(), endereco) == false) {
 			usuario.getListaEnderecos().add(endereco);
 			return true;
 		}
@@ -196,19 +231,6 @@ public class Model {
 	 * endAux.setEstado(nomeEstado); return true; }
 	 */
 
-	public boolean revomerRestaurante(int indice) {
-		if (proprietario.restaurante != null) {
-			if (!proprietario.restaurante.isEmpty()) {
-				if (controler.definirSenha() == proprietario.getSenha() && indice <= proprietario.restaurante.size()) {
-					proprietario.restaurante.remove(indice - 1);
-					return true;
-
-				}
-			}
-		}
-		return false;
-	}
-
 	public void AtualizarUsuario(int campo, String informacao) {
 		if (campo == 1)
 			usuario.setEmail(informacao);
@@ -221,37 +243,41 @@ public class Model {
 		}
 	}
 
-	public void AtualizarRest(int posicao, String informacao) {
-		if (posicao == 1)
-			proprietario.restaurante.get(posicao - 1).setNome(informacao);
-		if (posicao == 2)
-			proprietario.restaurante.get(posicao - 1).setHorarioFucionamento(informacao);
-		if (posicao == 4)
-			proprietario.restaurante.get(posicao - 1).setTelefoneContato(informacao);
-	}
-
-	public void AtualizarRest(int posicao, Endereco endereco) {
-		proprietario.restaurante.get(posicao - 1).setLocalização(endereco);
-	}
-
-	public boolean definirRestaurantePadrao(int restaurante) {
-		if (proprietario.restaurante != null && proprietario.restaurante.size() > 0) {
-			proprietario.setRestaurantePadrao(proprietario.getRestaurante().get(restaurante));
-			return true;
-		}
-		return false;
-	}
-
 	public boolean CadastraPrato(Prato prato) {
-		if(proprietario.getRestaurantePadrao().getCardapio().getPrato().size() == 0) {
+		if (proprietario.getRestaurantePadrao().getCardapio() == null ){
+			proprietario.getRestaurantePadrao().setCardapio(new Cardapio(new ArrayList<Prato>()));
 			proprietario.getRestaurantePadrao().getCardapio().getPrato().add(prato);
 			return true;
 		}
-		if(!proprietario.getRestaurantePadrao().getCardapio().getPrato().contains(prato)) {
+		if(proprietario.getRestaurantePadrao().getCardapio().getPrato().isEmpty() == true){
+			proprietario.getRestaurantePadrao().getCardapio().getPrato().add(prato);
+			return true;
+		}
+		if (PratoJaCadastrado(proprietario.getRestaurantePadrao().getCardapio().getPrato(), prato) == false) {
 			proprietario.getRestaurantePadrao().getCardapio().getPrato().add(prato);
 			return true;
 		}
 		return false;
 	}
-	
+
+	public boolean PratoJaCadastrado(ArrayList<Prato> pratos, Prato prato) {
+		for (int i = 0; i < pratos.size(); i++) {
+			if (pratos.get(i).getNome() == prato.getNome() && pratos.get(i).getSelo() == prato.getSelo()
+					&& pratos.get(i).getPorcao() == prato.getPorcao())
+				return true;
+		}
+		return false;
+	}
+	public String liPratos() {
+		int cont = 1;
+		String lista = "";
+		ArrayList<Prato> pratoAux = proprietario.getRestaurantePadrao().getCardapio().getPrato();
+		if (pratoAux != null && pratoAux.size() != 0) {
+			for (int i = 0; i < pratoAux.size(); i++) {
+				lista += (cont++) + "->" + pratoAux.get(i).getNome()+ pratoAux.get(i).getPorcao()
+						+ pratoAux.get(i).getPreco() + "\n";
+			}
+		}
+		return lista;
+	}
 }

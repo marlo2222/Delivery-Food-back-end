@@ -14,4 +14,11 @@ public char telaAdmRestaurante() {
 	return input.nextLine().charAt(0);
 }
 
+public char editarCardapio() {
+	System.out.println("1- remover prato:");
+	System.out.println("2- editar prato");
+	System.out.println("3 sair");
+	return input.nextLine().charAt(0);
+}
+
 }

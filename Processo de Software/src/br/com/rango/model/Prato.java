@@ -9,6 +9,7 @@ public class Prato {
 	private float preco;
 	public Prato() {
 		super();
+		
 	}
 
 	public String getNome() {

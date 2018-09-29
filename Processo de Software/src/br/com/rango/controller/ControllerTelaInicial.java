@@ -8,7 +8,6 @@ public class ControllerTelaInicial {
 	public TelaInicial preTela;
 	public ViewNotificacoes notificacoes = new ViewNotificacoes();
 	public ViewDadosCadastro dados = new ViewDadosCadastro();
-	public TelaEndereco preTelaEndereco;
 	public ViewEndereco endereco = new ViewEndereco();
 	public ControllerInicialRestaurante controlerestaurante;
 	public ControllerProprietario controleProprietario;
@@ -28,9 +27,9 @@ public class ControllerTelaInicial {
 
 	}
 
-	public ControllerTelaInicial(Model model, TelaEndereco preTelaEnderecoAlternativo) {
+	public ControllerTelaInicial(Model model) {
 		this.model = model;
-		this.preTelaEndereco = preTelaEnderecoAlternativo;
+		
 	}
 
 	// controler inicial, primeiro menu
