@@ -25,6 +25,10 @@ public class Model {
 		this.controler = controler;
 	}
 
+	public Model() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// cadastrando proprietarios
 	public boolean cadastraProprieatrio(String nome, String email, String cpf, String telefone) {
 
@@ -244,12 +248,12 @@ public class Model {
 	}
 
 	public boolean CadastraPrato(Prato prato) {
-		if (proprietario.getRestaurantePadrao().getCardapio() == null ){
+		if (proprietario.getRestaurantePadrao().getCardapio() == null) {
 			proprietario.getRestaurantePadrao().setCardapio(new Cardapio(new ArrayList<Prato>()));
 			proprietario.getRestaurantePadrao().getCardapio().getPrato().add(prato);
 			return true;
 		}
-		if(proprietario.getRestaurantePadrao().getCardapio().getPrato().isEmpty() == true){
+		if (proprietario.getRestaurantePadrao().getCardapio().getPrato().isEmpty() == true) {
 			proprietario.getRestaurantePadrao().getCardapio().getPrato().add(prato);
 			return true;
 		}
@@ -268,16 +272,50 @@ public class Model {
 		}
 		return false;
 	}
+
 	public String liPratos() {
 		int cont = 1;
 		String lista = "";
 		ArrayList<Prato> pratoAux = proprietario.getRestaurantePadrao().getCardapio().getPrato();
 		if (pratoAux != null && pratoAux.size() != 0) {
 			for (int i = 0; i < pratoAux.size(); i++) {
-				lista += (cont++) + "->" + pratoAux.get(i).getNome()+ pratoAux.get(i).getPorcao()
+				lista += (cont++) + "->" + pratoAux.get(i).getNome() + pratoAux.get(i).getPorcao()
 						+ pratoAux.get(i).getPreco() + "\n";
 			}
 		}
 		return lista;
+	}
+
+	public boolean removerPrato(int posicao) {
+		ArrayList<Prato> PratoAux = proprietario.getRestaurantePadrao().getCardapio().getPrato();
+		if (PratoAux != null && PratoAux.size() > 0 && posicao <= PratoAux.size()) {
+			PratoAux.remove(posicao - 1);
+			return true;
+		}
+		return false;
+	}
+
+	public void editarPrato(int indice, int campo, String conteudo) {
+		ArrayList<Prato> pratoAux = proprietario.getRestaurantePadrao().getCardapio().getPrato();
+		switch (campo) {
+		case 1:
+			pratoAux.get(indice-1).setNome(conteudo);
+			break;
+		case 2:
+			pratoAux.get(indice-1).setIngredientes(conteudo);
+			break;
+		case 3:
+			pratoAux.get(indice-1).setSelo(conteudo);
+			break;
+		case 4:
+			pratoAux.get(indice-1).setPorcao(conteudo);
+			break;
+		default:
+			break;
+		}
+	}
+
+	public void editarPrato(int indice, Float conteudo) {
+		proprietario.getRestaurantePadrao().getCardapio().getPrato().get(indice-1).setPreco(conteudo);;
 	}
 }

@@ -8,8 +8,11 @@ public class ControllerAdmRestaurante {
 	public ViemAdmRestaurante admRestaurante = new ViemAdmRestaurante();
 	public ViewCadastraCardapio prato = new ViewCadastraCardapio();
 	public ViewNotificacoes notificaçao = new ViewNotificacoes();
+	public ControllerEdicaoCardapio editCardapio;
+
 	public ControllerAdmRestaurante(Model model) {
 		this.model = model;
+		this.editCardapio = new ControllerEdicaoCardapio(model);
 	}
 
 	public void AdmRestaurante() {
@@ -17,21 +20,21 @@ public class ControllerAdmRestaurante {
 		do {
 			opcao = admRestaurante.telaAdmRestaurante();
 			switch (opcao) {
-			//fila de pedidos
+			// fila de pedidos
 			case '1':
-				
+
 				break;
-				//adiconar prato ao cardapio
+			// adiconar prato ao cardapio
 			case '2':
-				if(model.CadastraPrato(prato.cadastraPrato())==true) {
+				if (model.CadastraPrato(new Prato(prato.nomePrato(),prato.Ingredientes(),prato.Selo(),prato.porcao(),prato.preco())) == true) {
 					notificaçao.notificacao("prato adicionado ao cardapio");
-				}else {
+				} else {
 					notificaçao.notificacao("parece que esse prato ja foi cadastrado amiguinho");
 				}
 				break;
-				//editar cardapio;
+			// editar cardapio;
 			case '3':
-				
+				editCardapio.editarCardapio();
 				break;
 			default:
 				break;

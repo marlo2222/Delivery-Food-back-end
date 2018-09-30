@@ -7,9 +7,14 @@ public class Prato {
 	private String selo; //informando por exemplo sem glutem ou sem lactose
 	private String porcao; //exemplo porcao de coxinhas 5 unidades
 	private float preco;
-	public Prato() {
-		super();
-		
+	
+
+	public Prato(String nomePrato, String ingredientes, String selo, String porcao, float preco) {
+		this.setNome(nomePrato);
+		this.setIngredientes(ingredientes);
+		this.setSelo(selo);
+		this.setPorcao(porcao);
+		this.setPreco(preco);
 	}
 
 	public String getNome() {

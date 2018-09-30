@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class ViemMenuUsuarioEdicao {
 	Scanner input = new Scanner(System.in);
 	public  char menuEdicao() {
-		System.out.println("MENU EDIÇÃO:");
+		System.out.println("MENU INICIAL=>MENU USUARIO=>ATUALIZAR DADOS");
 		System.out.println("1 - editar seus dados:");
 		System.out.println("2 - editar endereço:");
 		System.out.println("3 - excluir sua conta:");
@@ -13,6 +13,7 @@ public class ViemMenuUsuarioEdicao {
 		return input.nextLine().charAt(0);
 	}
 	public char menuEditarDados() {
+		System.out.println("MENU INICIAL=>MENU USUARIO=>ATUALIZAR DADOS=>EDITAR DADOS");
 		System.out.println("qual campo deseja modificar:");
 		System.out.println("1 - E-mail");
 		System.out.println("2 - contato");

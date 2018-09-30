@@ -21,6 +21,7 @@ public class TelaInicial {
 	}
 	
 	public char telaInicial() {
+		System.out.println("MENU INICIAL");
 		System.out.println("1-logar");
 		System.out.println("2-cadastrar");
 		System.out.println("3-cadastre seu restaurante");

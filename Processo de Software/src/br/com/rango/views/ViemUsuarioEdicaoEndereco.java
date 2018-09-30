@@ -8,6 +8,7 @@ public class ViemUsuarioEdicaoEndereco {
 
 
 	public char menuEditarEndereco() {
+		System.out.println("MENU INICIAL=>MENU USUARIO=>ATUALIZAR DADOS=>EDITAR ENDEREÇO");
 		System.out.println("1 - Modificar endereco padrão:");
 		System.out.println("2 - Cadastra novo endereço:");
 		System.out.println("3 - Remover endereco:");
